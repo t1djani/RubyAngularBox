@@ -30,6 +30,8 @@ group :test, :development do
   gem "capybara"
   gem "database_cleaner"
   gem "selenium-webdriver"
+  gem "teaspoon"
+  gem "phantomjs"
 end
 
 # bundle exec rake doc:rails generates the API under doc/api.

@@ -3,6 +3,9 @@
   "dependencies": {
     "angular": "latest",
     "angular-route": "latest",
-    "foundation": "latest"
+    "angular-resource": "latest",
+    "angular-mocks": "latest",
+    "foundation": "latest",
+    "angular-flash": "latest"
   }
 }
