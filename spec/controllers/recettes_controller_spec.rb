@@ -67,5 +67,42 @@ describe RecettesController do
       let(:recette_id) { -9999 }
       it { expect(response.status).to eq(404) }
     end
+  end
+
+  describe "create" do
+    before do
+      xhr :post, :create, format: :json, recette: { name: "Toast", 
+                                           instructions: "Mettre du pain dans le grill, appuyer sur le bouton" }
+    end
+    it { expect(response.status).to eq(201) }
+    it { expect(Recette.last.name).to eq("Toast") }
+    it { expect(Recette.last.instructions).to eq("Mettre du pain dans le grill, appuyer sur le bouton") }
+  end
+
+  describe "update" do
+    let(:recette) { 
+      Recette.create!(name: 'Patates au fromage', 
+                     instructions: "Cuire 20 min, mettre fromage") 
+    }
+    before do
+      xhr :put, :update, format: :json, id: recette.id, recette: { name: "Toast", 
+                                                 instructions: "Mettre du pain dans le grill, appuyer sur le bouton" }
+      recette.reload
+    end
+    it { expect(response.status).to eq(204) }
+    it { expect(recette.name).to eq("Toast") }
+    it { expect(recette.instructions).to eq("Mettre du pain dans le grill, appuyer sur le bouton") }
+  end
+
+  describe "destroy" do
+    let(:recette_id) { 
+      Recette.create!(name: 'Patates au fromage', 
+                     instructions: "Cuire 20 min, mettre fromage").id
+    }
+    before do
+      xhr :delete, :destroy, format: :json, id: recette_id
+    end
+    it { expect(response.status).to eq(204) }
+    it { expect(Recette.find_by_id(recette_id)).to be_nil }
   end  
 end

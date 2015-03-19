@@ -10,4 +10,7 @@ controllers.controller("RecettesController", [ '$scope', '$routeParams', '$locat
       $scope.recettes = []
 
     $scope.view = (recetteId)-> $location.path("/recettes/#{recetteId}")
+
+    $scope.newRecette = -> $location.path("/recettes/new")
+    $scope.edit      = (recetteId)-> $location.path("/recettes/#{recetteId}/edit")
 ])

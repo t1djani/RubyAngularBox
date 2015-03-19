@@ -20,10 +20,16 @@ box.config([ '$routeProvider', 'flashProvider',
       .when('/',
         templateUrl: "index.html"
         controller: 'RecettesController'
+      ).when('/recettes/new',
+        templateUrl: "form.html"
+        controller: 'RecetteController'
       ).when('/recettes/:recetteId',
         templateUrl: "show.html"
         controller: 'RecetteController'
-       )
+      ).when('/recettes/:recetteId/edit',
+        templateUrl: "form.html"
+        controller: 'RecetteController'
+      )
 ])
 
 controllers = angular.module('controllers',[])

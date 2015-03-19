@@ -10,7 +10,15 @@
       {{recette.instructions}}
     </p>
   </article>
-  <button ng-click="back()" class="btn btn-default">
-    &larr; Back
-  </button>
+  <section>
+    <div class="col-md-3">
+      <button ng-click="back()" class="btn btn-default">
+        &larr; Revenir
+      </button>
+    </div>
+    <div class="col-md-9 text-right">
+      <button ng-click="edit()" class="btn btn-info"> Editer </button>
+      <button ng-click="delete()" class="btn btn-danger"> Supprimer </button>
+    </div>
+  </section>
 </section>
