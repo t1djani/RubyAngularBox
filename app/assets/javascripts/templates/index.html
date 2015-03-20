@@ -1,7 +1,7 @@
 <header class="row">
-  <h1 class="text-center col-md-6 col-md-offset-3">Trouver une recette</h1>
+  <a href="" ng-click="Onsearch = !Onsearch"><button class="button expand secondary" style="width:100%;">Chercher une recette</button></a>
 </header>
-<section class="row">
+<section class="row" ng-show="Onsearch">
   <form>
     <div class="form-group col-md-6 col-md-offset-3">
       <label for="keywords" class="sr-only">Mots Clés</label>
@@ -9,19 +9,18 @@
     </div>
     <div class="form-group col-md-6 col-md-offset-3 text-center">
       <button  ng-click="search(keywords)" class="btn btn-primary btn-lg">Chercher</button>
-      <button ng-click="newRecette()" class="btn btn-info btn-lg">Nouvelle recette</button>
     </div>
   </form>
 </section>
 <hr>
 <section class="row" ng-if="recettes">
-  <h1 class="text-center h2">Resultats</h1>
+    <button ng-click="newRecette()" class="button round info" style="margin-left: 40%;">Nouvelle recette</button>
+  <h1 class="text-center h2">Listes de vos recettes</h1>
   <ul class="list-unstyled" style="list-style-type:none;">
     <li ng-repeat="recette in recettes">
       <section class="well col-md-6 col-md-offset-3">
         <h1 class="h3 col-md-6 text-left"><a href ng-click="view(recette.id)" >{{recette.name}}</a></h1>
         <div class="col-md-6">
-          <button ng-click="edit(recette.id)" class="btn btn-info">Editer</button>
         </div>
       </section>
     </li>

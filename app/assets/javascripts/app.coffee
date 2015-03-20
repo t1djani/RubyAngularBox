@@ -17,7 +17,7 @@ box.config([ '$routeProvider', 'flashProvider',
     flashProvider.successClassnames.push("alert-success")
 
     $routeProvider
-      .when('/recettes',
+      .when('/',
         templateUrl: "index.html"
         controller: 'RecettesController'
       ).when('/recettes/new',
