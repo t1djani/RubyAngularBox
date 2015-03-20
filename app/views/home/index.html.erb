@@ -1,5 +1,27 @@
 <div ng-app="boxmaster">
-  <div class="view-container">
-    <div ng-view class="view-frame animate-view"></div>
-  </div>
+	<div class="icon-bar five-up">
+		<a class="item" href="/#/">
+		<img src="<%= image_path('svgs/fi-home.svg') %>" >
+			<label>Home</label>
+		</a>
+		<a class="item" href="/#/recettes">
+			<img src="<%= image_path('svgs/fi-bookmark.svg') %>" >
+			<label>Recettes</label>
+		</a>
+		<a class="item">
+			<img src="<%= image_path('svgs/fi-info.svg') %>" >
+			<label>Info</label>
+		</a>
+		<a class="item">
+			<img src="<%= image_path('svgs/fi-mail.svg') %>" >
+			<label>Mail</label>
+		</a>
+		<a class="item">
+			<img src="<%= image_path('svgs/fi-like.svg') %>" >
+			<label>Like</label>
+		</a>
+	</div>
+	<div class="view-container">
+		<div ng-view class="view-frame animate-view"></div>
+	</div>
 </div>

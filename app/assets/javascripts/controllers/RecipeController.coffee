@@ -19,13 +19,13 @@ controllers.controller("RecetteController", [ '$scope', '$routeParams', '$resour
     else
       $scope.recette = {}
 
-    $scope.back   = -> $location.path("/")
+    $scope.back   = -> $location.path("/recettes")
     $scope.edit   = -> $location.path("/recettes/#{$scope.recette.id}/edit")
     $scope.cancel = ->
       if $scope.recette.id
         $location.path("/recettes/#{$scope.recette.id}")
       else
-        $location.path("/")
+        $location.path("/recettes")
 
     $scope.save = ->
       onError = (_httpResponse)-> flash.error = "Il y a une erreur"
