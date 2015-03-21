@@ -1,0 +1,19 @@
+%div{"ng-app"=>"boxmaster"}
+	%div{:class=>"icon-bar five-up"}
+		%a{:class => "item", :href=>"/#/"}
+			%img{:src=> image_path('svgs/fi-home.svg')}
+				%label Home
+		%a{:class => "item", :href=>"/#/"}
+			%img{:src=> image_path('svgs/fi-bookmark.svg')}
+				%label Recettes
+		%a{:class => "item", :href=>"/#/"}
+			%img{:src=> image_path('svgs/fi-info.svg')}
+				%label Info
+		%a{:class => "item", :href=>"/#/"}
+			%img{:src=> image_path('svgs/fi-mail.svg')}
+				%label Mail
+		%a{:class => "item", :href=>"/#/"}
+			%img{:src=> image_path('svgs/fi-like.svg')}
+				%label Like
+	.view-container
+		%div{"ng-view"=>"", :class=>"view-frame animate-view"}

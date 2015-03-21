@@ -14,3 +14,5 @@ Rails.application.config.assets.precompile += %w(
   teaspoon-teaspoon.js
   teaspoon-jasmine.js
 )
+
+Rails.application.assets.register_engine '.haml', Tilt::HamlTemplate

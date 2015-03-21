@@ -32,4 +32,4 @@ box.config([ '$routeProvider', 'flashProvider',
       )
 ])
 
-controllers = angular.module('controllers',[])
+controllers = angular.module('controllers',[''])

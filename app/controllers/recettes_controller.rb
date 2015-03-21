@@ -5,7 +5,7 @@ class RecettesController < ApplicationController
   	@recettes = if params[:keywords]
                  Recette.where('name like ?',"%#{params[:keywords]}%")
                else
-                 Recette.all()
+                @recettes = Recette.all()
                end
   end
 

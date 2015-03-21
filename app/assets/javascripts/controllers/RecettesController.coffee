@@ -8,10 +8,11 @@ controllers.controller("RecettesController", [ '$scope', '$routeParams', '$locat
     if $routeParams.keywords
        Recette.query(keywords: $routeParams.keywords, (results)-> $scope.recettes = results)
     else
-       $scope.recettes = Recettes.query()
+      $scope.recettes = Recettes.query()
 
     $scope.view = (recetteId)-> $location.path("/recettes/#{recetteId}")
 
     $scope.newRecette = -> $location.path("/recettes/new")
     $scope.edit      = (recetteId)-> $location.path("/recettes/#{recetteId}/edit")
+
 ])
