@@ -7,7 +7,8 @@
       %h1 {{recette.name}}
     %p.panel-body
       {{recette.instructions}}
-    %img{:src => "{{recette.image}}" }
+    %div.row
+      %img{:src => "{{recette.image.image.url}}", :class => "small-12 large-6 columns" }
   %section
     .col-md-3
       %button.btn.btn-default{"ng-click" => "back()"}
