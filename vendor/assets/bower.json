@@ -4,6 +4,7 @@
     "angular": "latest",
     "angular-route": "latest",
     "angular-resource": "latest",
+    "angularjs-file-upload": "latest",
     "angular-mocks": "latest",
     "foundation": "latest",
     "angular-flash": "latest"

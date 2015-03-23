@@ -3,6 +3,7 @@ class CreateRecettes < ActiveRecord::Migration
     create_table :recettes do |t|
       t.string :name
       t.text :instructions
+      t.string :image
 
       t.timestamps null: false
     end

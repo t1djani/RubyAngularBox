@@ -5,7 +5,7 @@ class RecettesController < ApplicationController
   	@recettes = if params[:keywords]
                  Recette.where('name like ?',"%#{params[:keywords]}%")
                else
-                @recettes = Recette.all()
+                @recettes = Recette.page(params[:page])
                end
   end
 
@@ -14,8 +14,14 @@ class RecettesController < ApplicationController
   end
 
   def create
-    @recette = Recette.new(params.require(:recette).permit(:name,:instructions))
-    @recette.save
+    @recette = Recette.new()
+    @recette.name = params[:name]
+    @recette.instructions = params[:instructions]
+    @recette.image = params[:image]
+    @recette.save!
+    @recette.image.url
+    @recette.image.current_path
+    @recette.image.identifier
     render 'show', status: 201
   end
 

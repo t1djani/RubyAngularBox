@@ -1,6 +1,7 @@
 asset 'angular'
 asset 'angular-route'
 asset 'angular-resource'
+asset 'angularjs-file-upload'
 asset 'angular-mocks'
 asset 'foundation'
 asset 'angular-flash'

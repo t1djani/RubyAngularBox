@@ -1,12 +1,16 @@
 controllers = angular.module('controllers')
-controllers.controller("RecetteController", [ '$scope', '$routeParams', '$resource', '$location', 'flash',
-  ($scope,$routeParams,$resource,$location, flash)->
+controllers.controller("RecetteController", [ '$scope', '$routeParams', '$resource', '$location', 'flash', 'FileUploader'
+  ($scope,$routeParams,$resource,$location, flash, FileUploader)->
     Recette = $resource('/recettes/:recetteId', { recetteId: "@id", format: 'json' },
       {
         'save': {method:'PUT'},
         'create': {method:'POST'}
       }
     )
+
+    $scope.uploader = new FileUploader({url: 'recettes', alias: "image"})
+    $scope.uploader.onAfterAddingFile = (item) ->
+      item.formData.push({'name': $scope.recette.name, 'instructions': $scope.recette.instructions});
 
     if $routeParams.recetteId
       Recette.get({recetteId: $routeParams.recetteId},
@@ -26,18 +30,6 @@ controllers.controller("RecetteController", [ '$scope', '$routeParams', '$resour
         $location.path("/recettes/#{$scope.recette.id}")
       else
         $location.path("/")
-
-    $scope.save = ->
-      onError = (_httpResponse)-> flash.error = "Il y a une erreur"
-      if $scope.recette.id
-        $scope.recette.$save(
-          ( ()-> $location.path("/recettes/#{$scope.recette.id}") ),
-          onError)
-      else
-        Recette.create($scope.recette,
-          ( (newRecette)-> $location.path("/recettes/#{newRecette.id}") ),
-          onError
-        )
 
     $scope.delete = ->
       $scope.recette.$delete()

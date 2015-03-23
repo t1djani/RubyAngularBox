@@ -27,6 +27,7 @@ gem 'sass', '3.2.19'
 gem 'haml-rails' 
 gem 'will_paginate'
 gem 'carrierwave'
+gem 'angularjs-file-upload-rails', '~> 1.1.6'
 group :test, :development do
   gem "rspec-rails", "~> 2.0"
   gem "factory_girl_rails", "~> 4.0"

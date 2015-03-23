@@ -40,6 +40,7 @@ GEM
       railties (>= 3.1)
       sprockets
       tilt
+    angularjs-file-upload-rails (1.1.6)
     arel (6.0.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -214,6 +215,7 @@ PLATFORMS
 
 DEPENDENCIES
   angular-rails-templates
+  angularjs-file-upload-rails (~> 1.1.6)
   bower-rails
   byebug
   capybara

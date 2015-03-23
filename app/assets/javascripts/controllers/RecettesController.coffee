@@ -1,4 +1,4 @@
-controllers = angular.module('controllers',[])
+controllers = angular.module('controllers')
 controllers.controller("RecettesController", [ '$scope', '$routeParams', '$location', '$resource',
   ($scope,$routeParams,$location,$resource)->
     $scope.search = (keywords)->  $location.path("/").search('keywords',keywords)
@@ -14,5 +14,4 @@ controllers.controller("RecettesController", [ '$scope', '$routeParams', '$locat
 
     $scope.newRecette = -> $location.path("/recettes/new")
     $scope.edit      = (recetteId)-> $location.path("/recettes/#{recetteId}/edit")
-
 ])

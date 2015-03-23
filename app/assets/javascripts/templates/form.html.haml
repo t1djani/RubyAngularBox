@@ -1,20 +1,26 @@
 %aside.flash.row
   %article.col-md-6.col-md-offset-3{"active-class" => "alert", :duration => "0", "flash-alert" => ""}
     {{flash.message}}
-%form.edit-user{:role => "form"}
+%form.edit-user{:role => "form", :multipart => "true"}
   .form-group{"ng-class" => "{'has-warning has-feedback':errors.name}"}
     %label.col-md-2.control-label.col-md-offset-2{:for => "name"}
       Nom
     .col-md-5
-      %input.form-control{:name => "name", "ng-model" => "recette.name", :placeholder => "ex. Patates provençale", :type => "text"}
+      %input.form-control{:name => "name", :id => "name", "ng-model" => "recette.name", :placeholder => "ex. Patates provençale", :type => "text"}
   .form-group{"ng-class" => "{'has-warning has-feedback':errors.name}"}
     %label.col-md-2.control-label.col-md-offset-2{:for => "instructions"}
       Instructions
     .col-md-5
-      %textarea.form-control{:name => "instructions", "ng-model" => "recette.instructions", :placeholder => "ex. Cuire 30min"}
+      %textarea.form-control{:name => "instructions", :id => "instructions", "ng-model" => "recette.instructions", :placeholder => "ex. Cuire 30min"}
         :preserve
+  .form-group{"ng-class" => "{'has-warning has-feedback':errors.name}"}
+    .col-md-5
+      %input{:type => "file", "ng-model"=>"recette.image", :name => "image", :id => "image", "nv-file-select"=>"", "uploader"=>"uploader"}
+      %ul
+        %li{ "ng-repeat"=>"item in uploader.queue"}
+          Name: 
+          %span{"ng-bind"=>"item.file.name"}
+          %button.btn.btn-default{"ng-click" => "item.upload()"} Upload 
   .form-group
     .col-md-offset-2.col-md-3
       %button.btn.btn-default{"ng-click" => "cancel()"} Annuler
-    .col-md-4.text-right
-      %button.btn.btn-primary{"ng-click" => "save()"} Sauvegarder
