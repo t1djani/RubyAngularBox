@@ -11,5 +11,6 @@ and
 
 ```rake bower:install```
 
+run rails server with ```rails server```
 
-Enjoy !
+Enjoy at http://localhost:3000 !
