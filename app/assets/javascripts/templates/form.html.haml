@@ -20,7 +20,7 @@
         %li{ "ng-repeat"=>"item in uploader.queue"}
           Name: 
           %span{"ng-bind"=>"item.file.name"}
-          %button.btn.btn-default{"ng-click" => "item.upload()"} Upload 
+          %button.btn.btn-default{"ng-click" => "item.upload()"} Upload and Send  
   .form-group
     .col-md-offset-2.col-md-3
-      %button.btn.btn-default{"ng-click" => "cancel()"} Annuler
+      %button.btn.btn-default{"ng-click" => "cancel()"} Revenir

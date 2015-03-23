@@ -11,6 +11,7 @@ class RecettesController < ApplicationController
 
   def show
     @recette = Recette.find(params[:id])
+    @ingredients = @recette.ingredients
   end
 
   def create

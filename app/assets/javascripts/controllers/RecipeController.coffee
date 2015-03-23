@@ -10,8 +10,8 @@ controllers.controller("RecetteController", [ '$scope', '$routeParams', '$resour
 
     $scope.uploader = new FileUploader({url: 'recettes', alias: "image"})
     $scope.uploader.onAfterAddingFile = (item) ->
-      item.formData.push({'name': $scope.recette.name, 'instructions': $scope.recette.instructions});
-
+      item.formData.push({'name': $scope.recette.name, 'instructions': $scope.recette.instructions})
+    
     if $routeParams.recetteId
       Recette.get({recetteId: $routeParams.recetteId},
         ( (recette)-> $scope.recette = recette ),
