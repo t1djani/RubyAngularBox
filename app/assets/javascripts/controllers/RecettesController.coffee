@@ -16,8 +16,3 @@ controllers.controller("RecettesController", [ '$scope', '$routeParams', '$locat
     $scope.edit      = (recetteId)-> $location.path("/recettes/#{recetteId}/edit")
   
 ])
-.directive('custom', ()-> 
-  {
-    templateUrl: 'custom.html'
-  }
-)
