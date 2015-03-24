@@ -20,9 +20,6 @@ class RecettesController < ApplicationController
     @recette.instructions = params[:instructions]
     @recette.image = params[:image]
     @recette.save!
-    @recette.image.url
-    @recette.image.current_path
-    @recette.image.identifier
     render 'show', status: 201
   end
 
