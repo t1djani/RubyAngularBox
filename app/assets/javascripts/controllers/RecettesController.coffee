@@ -1,6 +1,6 @@
 controllers = angular.module('controllers')
-controllers.controller("RecettesController", [ '$scope', '$routeParams', '$location', '$resource',
-  ($scope,$routeParams,$location,$resource)->
+controllers.controller("RecettesController", [ '$scope', '$routeParams', '$location', '$resource', '$rootScope'
+  ($scope,$routeParams,$location,$resource,$rootScope)->
     $scope.search = (keywords)->  $location.path("/").search('keywords',keywords)
     Recette = $resource('/recettes/:recetteId', { recetteId: "@id", format: 'json' })
     Recettes = $resource('/recettes', {recettes: '@recettes', format: 'json'})
@@ -14,4 +14,10 @@ controllers.controller("RecettesController", [ '$scope', '$routeParams', '$locat
 
     $scope.newRecette = -> $location.path("/recettes/new")
     $scope.edit      = (recetteId)-> $location.path("/recettes/#{recetteId}/edit")
+  
 ])
+.directive('custom', ()-> 
+  {
+    templateUrl: 'custom.html'
+  }
+)

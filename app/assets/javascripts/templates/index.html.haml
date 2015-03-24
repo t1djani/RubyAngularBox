@@ -9,14 +9,8 @@
     .form-group.col-md-6.col-md-offset-3.text-center
       %button.btn.btn-primary.btn-lg{"ng-click" => "search(keywords)"} Chercher
 %hr
-  %section.row{"ng-if" => "recettes"}
+  %section.row
     %button.button.round.info{"ng-click" => "newRecette()", :style => "margin-left: 40%;"} Nouvelle recette
     %h1.text-center.h2 Listes de vos recettes
-    %ul.list-unstyled{:style => "list-style-type:none;"}
-      %li{"ng-repeat" => "recette in recettes"}
-        %section.well.col-md-6.col-md-offset-3
-          %h1.h3.col-md-6.text-left
-            %a{:href => "", "ng-click" => "view(recette.id)"} {{recette.name}}
-          .col-md-6
-    %div{:class=>"willPaginate", "data-params"=>"willPaginateCollection", "data-on-click"=>"getPage","data-config"=>"willPaginateConfig"}
+    %div{"custom"=>""}
           
