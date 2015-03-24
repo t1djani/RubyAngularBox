@@ -2,6 +2,11 @@
 
 Clone this repo
 
+Create Database with : 
+``` rake db:create```
+
+and run
+```rake db:migrate``` 
 
 Run 
 
