@@ -1,0 +1,42 @@
+//colors
+$color_celeste_approx: #ccc;
+$color_gallery_approx: #eee;
+$color_storm_dust_approx: #666;
+$color_log_cabin_approx: #222;
+$color_lochmara_approx: #157ebf;
+$color_tundora_approx: #444;
+
+
+article {
+  margin: 0;
+  padding: 0;
+  margin-top: -0.063em;
+  a {
+    display: block;
+    padding: 2.374em 2.5em 2.5em 2.5em;
+    overflow: hidden;
+    border-top: .063em solid $color_celeste_approx;
+    border-bottom: .063em solid $color_celeste_approx;
+    &:hover {
+      background: $color_gallery_approx;
+      border-top: $color_storm_dust_approx solid .25em;
+      padding: 2.187em 2.5em 2.5em 2.5em;
+      h2 {
+        color: $color_lochmara_approx;
+      }
+      p {
+        color: $color_log_cabin_approx;
+      }
+    }
+    h2 {
+      color: $color_log_cabin_approx;
+      float: right;
+      width: 75%;
+    }
+    p {
+      color: $color_tundora_approx;
+      float: right;
+      width: 75%;
+    }
+  }
+}
