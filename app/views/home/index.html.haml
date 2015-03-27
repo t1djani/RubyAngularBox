@@ -1,19 +1,27 @@
 %div{"ng-app"=>"boxmaster"}
-	%div{:class=>"icon-bar five-up"}
-		%a{:class => "item", :href=>"/#/"}
-			%img{:src=> image_path('svgs/fi-home.svg')}
-				%label Home
-		%a{:class => "item", :href=>"/#/"}
-			%img{:src=> image_path('svgs/fi-bookmark.svg')}
-				%label Recettes
-		%a{:class => "item", :href=>"/#/"}
-			%img{:src=> image_path('svgs/fi-info.svg')}
-				%label Info
-		%a{:class => "item", :href=>"/#/"}
-			%img{:src=> image_path('svgs/fi-mail.svg')}
-				%label Mail
-		%a{:class => "item", :href=>"/#/"}
-			%img{:src=> image_path('svgs/fi-like.svg')}
-				%label Like
+	#menu-nav
+		#navigation-bar
+			%ul
+				%li.menu-sub-nav.current-item
+					%a{:href => "/#/"}
+						%i.fa.fa-home
+						%span Home
+				%li.menu-sub-nav
+					%a{:href => "/#/"}
+						%i.fa.fa-cogs
+						%span Widgets
+				%li.menu-sub-nav
+					%a{:href => "/#/"}
+						%i.fa.fa-user
+						%span About
+				%li.menu-sub-nav
+					%a{:href => "/#/"}
+						%i.fa.fa-book
+						%span Contact
+				%li#searchbox.menu-sub-nav
+					%a{:href => "/#/", "ng-click" => "Onsearch = !Onsearch"}
+						%i.fa.fa-search
+						%span Search
 	.view-container
 		%div{"ng-view"=>"", :class=>"view-frame animate-view"}
+

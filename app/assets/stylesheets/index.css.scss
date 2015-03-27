@@ -1,10 +1,20 @@
-//colors
+@import url(http://fonts.googleapis.com/css?family=Roboto:300);
+
+$font_0: Roboto;
+$font_1: sans-serif;
+
 $color_celeste_approx: #ccc;
 $color_gallery_approx: #eee;
 $color_storm_dust_approx: #666;
 $color_log_cabin_approx: #222;
 $color_lochmara_approx: #157ebf;
 $color_tundora_approx: #444;
+$color_athens_gray_approx: #ecf0f1;
+$black_30: rgba(0,0,0,0.3);
+$color_gunsmoke_approx: #848484;
+$color_cinnabar_approx: #e74c3c;
+$color_suva_gray_approx: #888;
+
 
 
 article {
@@ -38,5 +48,105 @@ article {
       float: right;
       width: 75%;
     }
+  }
+}
+
+#menu-nav {
+  float: left;
+  width: 100%;
+  height: auto;
+  margin: 30px 0;
+  background-color: $color_athens_gray_approx;
+  //Instead of the line below you could use @includeborder-radius($radius, $vertical-radius)
+  border-radius: 4px;
+  overflow: hidden;
+  //Instead of the line below you could use @includebox-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  box-shadow: 0 0 5px $black_30;
+}
+#navigation-bar {
+  width: 100%;
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    //Instead of the line below you could use @includeborder-radius($radius, $vertical-radius)
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  li {
+    float: left;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 20%;
+    &:hover a:before {
+      right: 0;
+      left: 0;
+    }
+  }
+  a {
+    color: $color_gunsmoke_approx;
+    font-size: 20px;
+    text-decoration: none;
+    text-align: center;
+    width: 100%;
+    padding: 20px 0;
+    display: block;
+    position: relative;
+    //Instead of the line below you could use @includetransition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+    transition: all 0.3s ease;
+    &:hover {
+      color: $color_cinnabar_approx;
+    }
+    &:before {
+      content: '';
+      //Instead of the line below you could use @includetransition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+      transition: all .4s ease-in-out;
+      position: absolute;
+      right: 50%;
+      left: 50%;
+      bottom: 0;
+      display: block;
+      height: 2px;
+      background-color: $color_cinnabar_approx;
+    }
+  }
+  span {
+    display: block;
+  }
+  a:hover:before {
+    right: 0;
+    left: 0;
+  }
+}
+#search-bar {
+  width: 100%;
+  //Instead of the line below you could use @includeborder-radius($radius, $vertical-radius)
+  border-radius: 4px;
+}
+form {
+  width: 90%;
+  margin: 10px auto;
+}
+input#searchfld {
+  width: 100%;
+  margin-left: 6%;
+  text-align: center;
+  outline: none;
+  //Instead of the line below you could use @includeborder-radius($radius, $vertical-radius)
+  border-radius: 4px;
+  border: 1px solid $color_cinnabar_approx;
+  font: normal 300 18px $font_0, $font_1;
+  color: $color_suva_gray_approx;
+  //Instead of the line below you could use @includetransition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+  transition: box-shadow 0.5s ease;
+  &:focus {
+    //Instead of the line below you could use @includebox-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 0 0 10px $color_cinnabar_approx;
+  }
+  &:active {
+    //Instead of the line below you could use @includebox-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 0 0 10px $color_cinnabar_approx;
   }
 }

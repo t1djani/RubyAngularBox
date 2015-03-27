@@ -1,13 +1,9 @@
-%header.row
-  %a{:href => "", "ng-click" => "Onsearch = !Onsearch"}
-    %button.button.expand.secondary{:style => "width:100%;"} Chercher une recette
-%section.row{"ng-show" => "Onsearch"}
+/ %header.row
+/   %a{:href => "", "ng-click" => "Onsearch = !Onsearch"}
+/     %button.button.expand.secondary{:style => "width:100%;"} Chercher une recette
+#search-bar{"ng-show"=>"Onsearch"}
   %form
-    .form-group.col-md-6.col-md-offset-3
-      %label.sr-only{:for => "keywords"} Mots Clés
-      %input.form-control{:autofocus => "", :name => "keywords", "ng-model" => "keywords", :placeholder => "Nom de recettes, ex. Patates", :type => "text"}
-    .form-group.col-md-6.col-md-offset-3.text-center
-      %button.btn.btn-primary.btn-lg{"ng-click" => "search(keywords)"} Chercher
+    %input#searchfld{:autofocus => "", :name => "keywords", "ng-model" => "keywords", :placeholder => "Nom de recettes, ex. Patates", :type => "text"}
 %hr
   %section.row
     %button.button.round.info{"ng-click" => "newRecette()", :style => "margin-left: 40%;"} Nouvelle recette
