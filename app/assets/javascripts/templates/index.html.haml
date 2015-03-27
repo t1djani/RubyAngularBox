@@ -4,8 +4,9 @@
 #search-bar{"ng-show"=>"Onsearch"}
   %form
     %input#searchfld{:autofocus => "", :name => "keywords", "ng-model" => "keywords", :placeholder => "Nom de recettes, ex. Patates", :type => "text"}
+    %button.button.round.secondary{"ng-click"=>"search(keywords)", :style => "margin-left: 49%;"} Search
 %hr
-  %section.row
+  %section.row 
     %button.button.round.info{"ng-click" => "newRecette()", :style => "margin-left: 40%;"} Nouvelle recette
     %h1.text-center.h2 Listes de vos recettes
     %div{"custom"=>""}
