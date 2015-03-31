@@ -1,27 +1,8 @@
 %div{"ng-app"=>"boxmaster"}
-	#menu-nav
-		#navigation-bar
-			%ul
-				%li.menu-sub-nav.current-item
-					%a{:href => "/#/"}
-						%i.fa.fa-home
-						%span Home
-				%li.menu-sub-nav
-					%a{:href => "/#/"}
-						%i.fa.fa-cogs
-						%span Widgets
-				%li.menu-sub-nav
-					%a{:href => "/#/"}
-						%i.fa.fa-user
-						%span About
-				%li.menu-sub-nav
-					%a{:href => "/#/"}
-						%i.fa.fa-book
-						%span Contact
-				%li#searchbox.menu-sub-nav
-					%a{:href => "/#/", "ng-click" => "Onsearch = !Onsearch"}
-						%i.fa.fa-search
-						%span Search
-	.view-container
-		%div{"ng-view"=>"", :class=>"view-frame animate-view"}
-
+  %nav.top-bar{ data_topbar: "", role: "navigation"}
+    %ul.title-area
+      %li.name
+        %h1
+          %a{ href: "/#/" } Home
+  .view-container
+    .view-frame.animate-view{ ng_view: "" }

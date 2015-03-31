@@ -10,18 +10,17 @@ box = angular.module("boxmaster", [
 ])
 
 
-box.config([ '$routeProvider', 'flashProvider',
-  ($routeProvider,flashProvider)->
+box.config ( $routeProvider,flashProvider ) ->
 
-    flashProvider.errorClassnames.push("alert-danger")
-    flashProvider.warnClassnames.push("alert-warning")
-    flashProvider.infoClassnames.push("alert-info")
-    flashProvider.successClassnames.push("alert-success")
+    flashProvider.errorClassnames.push "alert-danger"
+    flashProvider.warnClassnames.push "alert-warning"
+    flashProvider.infoClassnames.push "alert-info"
+    flashProvider.successClassnames.push "alert-success"
 
     $routeProvider
       .when('/',
         templateUrl: "index.html"
-        controller: 'RecettesController'
+        controller: 'IndexController'
       ).when('/recettes/new',
         templateUrl: "form.html"
         controller: 'RecetteController'
@@ -32,7 +31,7 @@ box.config([ '$routeProvider', 'flashProvider',
         templateUrl: "form.html"
         controller: 'RecetteController'
       )
-])
 
-controllers = angular.module('controllers', [])
-directives = angular.module('directives', [])
+
+controllers = angular.module 'controllers', []
+directives = angular.module 'directives', []

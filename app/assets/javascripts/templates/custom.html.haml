@@ -1,7 +1,7 @@
-%section{:id => "postIndex", :class => "widthWrapper"}
-	%article{"ng-repeat" => "recette in recettes"}
-		%a{:href => "", "ng-click" => "view(recette.id)"}
+%section#postIndex.widthWrapper
+	%article{ ng_repeat: 'recette in recettes' }
+		%a{ href: "", ng_click: "view(recette.id)" }
 			.postImg
-				%img{:src => "{{recette.image.image.url}}", :class => "small-3 large-3 columns" }
-			%h2 {{recette.name}}
-			%p {{recette.instructions | limitTo: 30}} { ... }
+				%img.small-3.large-3.columns{ src: "{{recette.image.image.url}}" }
+			%h2 {{ recette.name }}
+			%p {{ recette.instructions | limitTo: 30 }} { ... }

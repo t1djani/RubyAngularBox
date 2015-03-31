@@ -1,20 +1,22 @@
 %aside.flash.row
-  %article.col-md-6.col-md-offset-3.col-sm-12{"active-class" => "alert", :duration => "0", "flash-alert" => ""}
-    {{flash.message}}
+  %article.col-md-6.col-md-offset-3.col-sm-12{ active_class: "alert", duration: "0", flash_alert: "" }
+    {{ flash.message }}
+
 %section.col-md-6.col-md-offset-3
   %article.panel.panel-info
     %header.panel-heading
-      %h1 {{recette.name}}
+      %h1 {{ recette.name }}
     %p.panel-body
-      {{recette.instructions}}
-    %h1 Ingredients : 
-    %p {{recette.ingredients[0]['name']}}
+      {{ recette.instructions }}
+    %h1 Ingredients :
+    %p {{ recette.ingredients[0]['name'] }}
     %div.row
-      %img{:src => "{{recette.image.image.url}}", :class => "small-12 large-6 columns" }
+      %img.small-12.large-6.columns{ src: "{{recette.image.image.url}}" }
+
   %section
     .col-md-3
-      %button.btn.btn-default{"ng-click" => "back()"}
+      %button.btn.btn-default{ ng_click: "back()" }
         \&larr; Revenir
     .col-md-9.text-right
-      %button.btn.btn-info{"ng-click" => "edit()"} Editer
-      %button.btn.btn-danger{"ng-click" => "delete()"} Supprimer
+      %button.btn.btn-info{ ng_click: "edit()" } Editer
+      %button.btn.btn-danger{ ng_click: "delete()" } Supprimer

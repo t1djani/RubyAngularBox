@@ -1,12 +1,15 @@
 / %header.row
 /   %a{:href => "", "ng-click" => "Onsearch = !Onsearch"}
 /     %button.button.expand.secondary{:style => "width:100%;"} Chercher une recette
-#search-bar{"ng-show"=>"Onsearch"}
+
+#search-bar{}
   %form
-    %input#searchfld{:autofocus => "", :name => "keywords", "ng-model" => "keywords", :placeholder => "Nom de recettes, ex. Patates", :type => "text"}
-    %button.button.round.secondary{"ng-click"=>"search(keywords)", :style => "margin-left: 49%;"} Search
+    %input{ autofocus: "", name: "keywords", ng_model: "keywords", placeholder: "Nom de recettes, ex. Patates", type: "text" }
+    %a.alert.button{ ng_click: "search(keywords)" } Search
+
 %hr
-  %section.row 
-    %button.button.round.info{"ng-click" => "newRecette()", :style => "margin-left: 40%;"} Nouvelle recette
+
+  %section.row
+    %button.button.round.info{ ng_click: "newRecette()", style: "margin-left: 40%" } Nouvelle recette
     %h1.text-center.h2 Listes de vos recettes
-    %div{"custom"=>""}
+    %div{ custom: "" }

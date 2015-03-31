@@ -1,6 +1,7 @@
 controllers = angular.module('controllers')
-controllers.controller("RecetteController", [ '$scope', '$routeParams', '$resource', '$location', 'flash', 'FileUploader'
-  ($scope,$routeParams,$resource,$location, flash, FileUploader)->
+
+controllers.controller "RecetteController", ($scope,$routeParams,$resource,$location, flash, FileUploader) ->
+
     Recette = $resource('/recettes/:recetteId', { recetteId: "@id", format: 'json' },
       {
         'save': {method:'PUT'},
@@ -8,10 +9,9 @@ controllers.controller("RecetteController", [ '$scope', '$routeParams', '$resour
       }
     )
 
+    # Instancier la classe d'upload
     $scope.uploader = new FileUploader({url: 'recettes', alias: "image"})
-    $scope.uploader.onAfterAddingFile = (item) ->
-      item.formData.push({'name': $scope.recette.name, 'instructions': $scope.recette.instructions})
-    
+
     if $routeParams.recetteId
       Recette.get({recetteId: $routeParams.recetteId},
         ( (recette)-> $scope.recette = recette ),
@@ -23,15 +23,21 @@ controllers.controller("RecetteController", [ '$scope', '$routeParams', '$resour
     else
       $scope.recette = {}
 
-    $scope.back   = -> $location.path("/")
-    $scope.edit   = -> $location.path("/recettes/#{$scope.recette.id}/edit")
+    # Methodes
+
+    $scope.uploader.onAfterAddingFile = (item) ->
+      item.formData.push
+        'name': $scope.recette.name
+        'instructions': $scope.recette.instructions
+
+    $scope.back   = -> $location.path "/"
+    $scope.edit   = -> $location.path "/recettes/#{$scope.recette.id}/edit"
     $scope.cancel = ->
       if $scope.recette.id
-        $location.path("/recettes/#{$scope.recette.id}")
+        $location.path "/recettes/#{$scope.recette.id}"
       else
-        $location.path("/")
+        $location.path "/"
 
     $scope.delete = ->
       $scope.recette.$delete()
       $scope.back()
-])
