@@ -12,6 +12,5 @@ controllers.controller "IndexController", ($scope,$routeParams,$location,$resour
       $scope.recettes = Recettes.query()
 
     $scope.search = (keywords)->  $location.path("/").search('keywords',keywords)
-    $scope.view = (recetteId)-> $location.path("/recettes/#{recetteId}")
     $scope.newRecette = -> $location.path("/recettes/new")
     $scope.edit      = (recetteId)-> $location.path("/recettes/#{recetteId}/edit")

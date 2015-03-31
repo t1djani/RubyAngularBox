@@ -12,4 +12,7 @@
   %section.row
     %button.button.round.info{ ng_click: "newRecette()", style: "margin-left: 40%" } Nouvelle recette
     %h1.text-center.h2 Listes de vos recettes
-    %div{ custom: "" }
+
+  %section#postIndex.widthWrapper
+    %article{ ng_repeat: 'recette in recettes' }
+      %listing{ recette: "recette" }
