@@ -13,5 +13,6 @@
  *= require_tree .
  *= require_self
  */
-@import "foundation/css/foundation";
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap";
 @import "index.css"

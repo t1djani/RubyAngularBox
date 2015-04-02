@@ -7,6 +7,7 @@
     "angularjs-file-upload": "latest",
     "angular-mocks": "latest",
     "angular-sanitize": "latest",
+    "bootstrap-sass-official": "latest",
     "foundation": "latest",
     "angular-flash": "latest"
   }

@@ -1,18 +1,3 @@
-/ %header.row
-/   %a{:href => "", "ng-click" => "Onsearch = !Onsearch"}
-/     %button.button.expand.secondary{:style => "width:100%;"} Chercher une recette
-
-#search-bar{}
-  %form
-    %input{ autofocus: "", name: "keywords", ng_model: "keywords", placeholder: "Nom de recettes, ex. Patates", type: "text" }
-    %a.alert.button{ ng_click: "search(keywords)" } Search
-
-%hr
-
-  %section.row
-    %button.button.round.info{ ng_click: "newRecette()", style: "margin-left: 40%" } Nouvelle recette
-    %h1.text-center.h2 Listes de vos recettes
-
-  %section#postIndex.widthWrapper
-    %input#check{ type: "checkbox", ng_model: "show" }  Avec image
-    %listing{ng_repeat: 'recette in recettes | filtre:show | orderBy:"name"', recette: "recette" }
+%div.container
+  .row.form-group
+    .col-xs-12.col-md-6{ listing: "listing", ng_repeat: 'recette in recettes | filtre:show | orderBy:"name"', recette: "recette" }

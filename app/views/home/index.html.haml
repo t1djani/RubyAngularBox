@@ -1,8 +1,12 @@
-%div{"ng-app"=>"boxmaster"}
-  %nav.top-bar{ data_topbar: "", role: "navigation"}
-    %ul.title-area
-      %li.name
-        %h1
-          %a{ href: "/#/" } Home
+%div{"ng-app"=>"boxmaster", "ng-controller"=>"IndexController"}
+  %nav.navbar.navbar-inverse
+    .container-fluid
+      %a.navbar-brand{ href: "/#/" } Home
+      %a.navbar-brand{ href: "/#/recettes/new" } Nouvelle recette
+
+      %form.navbar-form.navbar-right
+        .form-group
+          %input{ autofocus: "", name: "keywords", ng_model: "keywords", placeholder: "ex. Patate", type: "text" }
+        %button.btn.btn-default{ ng_click: "search(keywords)" } Search
   .view-container
     .view-frame.animate-view{ ng_view: "" }
