@@ -6,6 +6,7 @@
     "angular-resource": "latest",
     "angularjs-file-upload": "latest",
     "angular-mocks": "latest",
+    "angular-sanitize": "latest",
     "foundation": "latest",
     "angular-flash": "latest"
   }

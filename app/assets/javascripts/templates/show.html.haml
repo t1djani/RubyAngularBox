@@ -6,8 +6,7 @@
   %article.panel.panel-info
     %header.panel-heading
       %h1 {{ recette.name }}
-    %p.panel-body
-      {{ recette.instructions }}
+    %p.panel-body{ ng_bind_html: "recette.instructions | nl2br" }
     %h1 Ingredients :
     %p {{ recette.ingredients[0]['name'] }}
     %div.row

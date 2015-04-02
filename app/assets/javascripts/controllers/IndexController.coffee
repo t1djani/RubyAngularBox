@@ -6,6 +6,8 @@ controllers.controller "IndexController", ($scope,$routeParams,$location,$resour
     Recette = $resource '/recettes/:recetteId', { recetteId: "@id", format: 'json' }
     Recettes = $resource '/recettes', { recettes: '@recettes', format: 'json' }
 
+    $scope.show = false
+
     if $routeParams.keywords
        Recette.query(keywords: $routeParams.keywords, (results)-> $scope.recettes = results)
     else

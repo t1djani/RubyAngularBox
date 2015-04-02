@@ -1,5 +1,6 @@
-%a{ href: "", ng_click: "view(recette.id)" }
-	.postImg
-		%img.small-3.large-3.columns{ src: "{{recette.image.image.url}}" }
-			%h2 {{ recette.name }}
-			%p {{ recette.instructions | limitTo: 30 }} { ... }
+%article
+	%a{ href: "", ng_click: "view(recette.id)" }
+		.postImg
+			%img.small-3.large-3.columns{ src: "{{recette.image.image.url}}" }
+				%h2 {{ recette.name }}
+				%p {{ recette.instructions | limitTo: 30 }} { ... }

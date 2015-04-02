@@ -1,10 +1,12 @@
 box = angular.module("boxmaster", [
-	'templates',
+  'templates',
   'ngRoute',
-  'ngResource'
+  'ngResource',
+  'ngSanitize',
   'controllers',
   'directives',
-  'angularFileUpload'
+  'filters',
+  'angularFileUpload',
   'angular-flash.service',
   'angular-flash.flash-alert-directive'
 ])
@@ -35,3 +37,4 @@ box.config ( $routeProvider,flashProvider ) ->
 
 controllers = angular.module 'controllers', []
 directives = angular.module 'directives', []
+filters = angular.module 'filters', []

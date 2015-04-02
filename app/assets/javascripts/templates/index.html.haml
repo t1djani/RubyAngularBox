@@ -14,5 +14,5 @@
     %h1.text-center.h2 Listes de vos recettes
 
   %section#postIndex.widthWrapper
-    %article{ ng_repeat: 'recette in recettes' }
-      %listing{ recette: "recette" }
+    %input#check{ type: "checkbox", ng_model: "show" }  Avec image
+    %listing{ng_repeat: 'recette in recettes | filtre:show | orderBy:"name"', recette: "recette" }

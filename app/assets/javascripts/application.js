@@ -15,6 +15,7 @@
 //= require angular/angular
 //= require angular-route/angular-route
 //= require angular-resource/angular-resource
+//= require angular-sanitize/angular-sanitize
 //= require angular-flash/dist/angular-flash
 //= require angularjs-file-upload
 //= require angular-rails-templates
