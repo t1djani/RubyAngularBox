@@ -2,7 +2,6 @@ box = angular.module("boxmaster", [
   'templates',
   'ngRoute',
   'ngResource',
-  'ngSanitize',
   'controllers',
   'directives',
   'filters',
@@ -37,4 +36,4 @@ box.config ( $routeProvider,flashProvider ) ->
 
 controllers = angular.module 'controllers', []
 directives = angular.module 'directives', []
-filters = angular.module 'filters', []
+filters = angular.module 'filters', ['ngSanitize']
