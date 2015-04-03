@@ -5,7 +5,7 @@ class RecettesController < ApplicationController
   	@recettes = if params[:keywords]
                  Recette.where('name like ?',"%#{params[:keywords]}%")
                else
-                @recettes = Recette.page(params[:page])
+                @recettes = Recette.paginate(:page => params[:page], :per_page => 2)
                end
   end
 

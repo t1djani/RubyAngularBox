@@ -1,7 +1,7 @@
 @import url("http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
 
 .panel-image img.panel-image-preview {
-    width: 100%;
+  width: 100%;
 	border-radius: 4px 4px 0px 0px;
 }
 
@@ -9,16 +9,13 @@
 	border-radius: 0px;
 }
 
-.panel-image ~ .panel-body, .panel-image.hide-panel-body ~ .panel-body {
-	overflow: hidden;
-}
 .panel-image ~ .panel-footer a {
 	padding: 0px 10px;
 	font-size: 1.3em;
 	color: rgb(100, 100, 100);
 }
 
-.panel-image.hide-panel-body ~ .panel-body {
+.panel-image.panel-body {
 	height: 0px;
 	padding: 0px;
 }
