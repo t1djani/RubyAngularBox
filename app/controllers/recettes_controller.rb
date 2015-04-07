@@ -2,16 +2,18 @@ class RecettesController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def index
-  	@recettes = if params[:keywords]
+  	recettes = if params[:keywords]
                  Recette.where('name like ?',"%#{params[:keywords]}%")
                else
-                @recettes = Recette.paginate(:page => params[:page], :per_page => 2)
+                 Recette.paginate(:page => params[:page], :per_page => 2)
                end
+    render json: recettes
   end
 
   def show
-    @recette = Recette.find(params[:id])
-    @ingredients = @recette.ingredients
+    recette = Recette.find(params[:id])
+    ingredients = recette.ingredients
+    render json: recette
   end
 
   def create
@@ -20,7 +22,7 @@ class RecettesController < ApplicationController
     @recette.instructions = params[:instructions]
     @recette.image = params[:image]
     @recette.save!
-    render 'show', status: 201
+    head :no_content
   end
 
   def update
