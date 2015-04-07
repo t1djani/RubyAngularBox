@@ -17,6 +17,8 @@
 //= require angular-resource/angular-resource
 //= require angular-sanitize/angular-sanitize
 //= require angular-flash/dist/angular-flash
+//= require angular-ui-bootstrap/dist/ui-bootstrap-0.13.0-SNAPSHOT.js
+//= require angular-ui-bootstrap/dist/ui-bootstrap-tpls-0.13.0-SNAPSHOT.js
 //= require angularjs-file-upload
 //= require angular-rails-templates
 //= require_tree .

@@ -8,7 +8,7 @@
     "angular-mocks": "latest",
     "angular-sanitize": "latest",
     "bootstrap-sass-official": "latest",
-    "foundation": "latest",
+    "angular-ui-bootstrap": "latest",
     "angular-flash": "latest"
   }
 }

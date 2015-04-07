@@ -5,6 +5,7 @@ box = angular.module("boxmaster", [
   'controllers',
   'directives',
   'filters',
+  'ui.bootstrap',
   'angularFileUpload',
   'angular-flash.service',
   'angular-flash.flash-alert-directive'

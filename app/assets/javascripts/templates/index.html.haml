@@ -2,14 +2,6 @@
   -# %input{type: "checkbox", ng_model: "show"}
   .row.form-group
     .col-xs-12.col-md-6{ listing: "listing", ng_repeat: 'recette in recettes | filtre:show | orderBy:"name"', recette: "recette" }
-  %div{ class: "willPaginate", data_params: "willPaginateCollection", data_on_click: "getPage", data_config: "willPaginateConfig" }
-  -# %nav
-  -#   %ul.pagination
-  -#     %li
-  -#       %a{ href: "" } 1
-  -#       %a{ href: "" } 2
-  -#       %a{ href: "" } 3
-  -#       %a{ href: "" } 4
-  -#     %li
-  -#       %a{ href: "", aria_label: "Next" }
-  -#         %span{ aria_hidden: "true", ng_click: "nextPage()" } &raquo
+    %pagination{ total_items: "pagination.totalItems",
+      ng: { model: "pagination.currentPage", change: "pageChanged()" },
+      items_per_page: "pagination.perPage" }
