@@ -11,7 +11,7 @@ controllers.controller "IndexController", ($scope,$routeParams,$location,$resour
     if $routeParams.keywords
       Recette.query(keywords: $routeParams.keywords, (results)-> $scope.recettes = results)
     else
-      $scope.recettes = Recettes.query page: 2s
+      $scope.recettes = Recettes.query page: 2
 
     $scope.search = (keywords)->  $location.path("/").search('keywords',keywords)
     $scope.newRecette = -> $location.path("/recettes/new")
