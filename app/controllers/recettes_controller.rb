@@ -8,10 +8,14 @@ class RecettesController < ApplicationController
                else
                  Recette.paginate(page: params[:page], per_page: 2)
                end
+
     totalItem = Recette.all.count
+    searchItem = recettes.count
+
     render json: {
       recettes: recettes,
-      totalItem: totalItem
+      totalItem: totalItem,
+      searchItem: searchItem
     }
   end
 
