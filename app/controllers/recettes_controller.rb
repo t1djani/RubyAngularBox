@@ -2,12 +2,15 @@ class RecettesController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def index
-  	recettes = if params[:keywords]
+    recettes = if params[:keywords]
                  Recette.where('name like ?',"%#{params[:keywords]}%")
                else
-                 Recette.paginate(:page => params[:page], :per_page => 2)
+                 Recette.paginate(page: params[:page], per_page: 2)
                end
-    render json: recettes
+    render json: {
+      recettes: recettes,
+      totalItem: recettes.count
+    }
   end
 
   def show

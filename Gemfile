@@ -32,11 +32,10 @@ gem 'angularjs-file-upload-rails', '~> 1.1.6'
 gem 'active_model_serializers'
 
 group :test, :development do
-  gem "rspec-rails", "~> 2.0"
-  gem "factory_girl_rails", "~> 4.0"
-  gem "capybara"
+  gem "rspec-rails", "~> 3.0"
+  gem "api_matchers"
+  gem "factory_girl_rails"
   gem "database_cleaner"
-  gem "selenium-webdriver"
   gem "teaspoon"
   gem "phantomjs"
 end
