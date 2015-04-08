@@ -24,3 +24,14 @@
   width: 800px;
   height: 400px;
 }
+
+#form {
+  width: 800px;
+  margin: 0 auto;
+  .control-group {
+    padding-bottom: 10px;
+    #file {
+      padding-top: 5px;
+    }
+  }
+}

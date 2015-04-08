@@ -1,12 +1,12 @@
 .container
   .col-md-9
     .thumbnail
-      %img.img-responsive#showImg{ src: "{{recette.image.image.url}}" }
+      %img.img-responsive#showImg{ src: "{{recette.image.url}}" }
       .caption-full
         %h4 {{ recette.name }}
         %p{ ng_bind_html: "recette.instructions | nl2br" }
         %h4 Ingredients :
-        %p{ ng_repeat: "ingredient in recette.ingredients" } {{ ingredient.name }}
+        %p{ ng_repeat: "ingredient in ingredients" } {{ ingredient.name }}
     %button.btn.btn-info{ ng_click: "edit()" } Editer
     %button.btn.btn-danger{ ng_click: "delete()" } Supprimer
     %button.btn.btn-info{ ng_click: "back()" } Back

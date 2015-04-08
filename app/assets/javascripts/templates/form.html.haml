@@ -3,29 +3,30 @@
     {{ flash.message }}
 
 %form.edit-user{ role: "form", multipart: "true" }
+  %fieldset#form
+    .control-group{ ng_class: "{ 'has-warning has-feedback':errors.name }" }
+      %label.control-label{ for: "name" }
+        Nom
+      .controls
+        %input.form-control#name{ name: "name", ng_model: "recette.name", placeholder: "ex. Patates provençale", type: "text" }
 
-  .form-group{ ng_class: "{ 'has-warning has-feedback':errors.name }" }
-    %label.col-md-2.control-label.col-md-offset-2{ for: "name" }
-      Nom
-    .col-md-5
-      %input.form-control#name{ name: "name", ng_model: "recette.name", placeholder: "ex. Patates provençale", type: "text" }
+    .control-group{ ng_class: "{ 'has-warning has-feedback':errors.name }" }
+      %label.control-label{ for: "instructions" }
+        Instructions
+      .controls
+        %textarea.form-control#instructions{ name: "instructions", ng_model: "recette.instructions", placeholder: "ex. Cuire 30min" }
+          :preserve
 
-  .form-group{ ng_class: "{ 'has-warning has-feedback':errors.name }" }
-    %label.col-md-2.control-label.col-md-offset-2{ for: "instructions" }
-      Instructions
-    .col-md-5
-      %textarea.form-control#instructions{ name: "instructions", ng_model: "recette.instructions", placeholder: "ex. Cuire 30min" }
-        :preserve
+    .control-group{ ng_class: "{ 'has-warning has-feedback':errors.name }" }
+      .controls
+        %span{ class: "btn btn-default btn-file" }
+          %input{ type: "file", ng_model: "recette.image", name: "image", nv_file_select: "", uploader: "uploader"}
+        %ul#file
+          %li{ ng_repeat: "item in uploader.queue" }
+            Name:
+            %span{ ng_bind: "item.file.name" }
+            %button.btn.btn-default{ ng_click: "item.upload()" } Upload and Send
 
-  .form-group{ ng_class: "{ 'has-warning has-feedback':errors.name }" }
-    .col-md-5
-      %input#image{ type: "file", ng_model: "recette.image", name: "image", nv_file_select: "", uploader: "uploader" }
-      %ul
-        %li{ ng_repeat: "item in uploader.queue" }
-          Name:
-          %span{ ng_bind: "item.file.name" }
-          %button.btn.btn-default{ ng_click: "item.upload()" } Upload and Send
-
-  .form-group
-    .col-md-offset-2.col-md-3
-      %button.btn.btn-default{ ng_click: "cancel()" } Revenir
+    .control-group
+      .controls
+        %button.btn.btn-default{ ng_click: "cancel()" } Revenir

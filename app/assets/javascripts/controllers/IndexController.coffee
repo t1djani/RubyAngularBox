@@ -3,13 +3,13 @@ controllers = angular.module('controllers')
 controllers.controller "IndexController", ($scope,$routeParams,$location,$resource) ->
 
     # Recupérer les recettes en db via json
-    Recette = $resource '/recettes/:recetteId', { recetteId: "id", format: 'json' }
+    Recette = $resource '/recettes/:recetteId', { recetteId: "id", format: 'json' }, { 'query': { method: 'get', isArray: false } }
     Recettes = $resource '/recettes', { recettes: 'recettes', format: 'json' }, { 'query': { method: 'get', isArray: false } }
 
     $scope.show = false
 
     if $routeParams.keywords
-      Recette.query(keywords: $routeParams.keywords, (results)-> $scope.recettes = results)
+      Recette.query(keywords: $routeParams.keywords, (results)-> $scope.recettes = results.recettes)
     else
       $scope.recettes = Recettes.query (data)->
         $scope.recettes = data.recettes

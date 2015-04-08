@@ -14,7 +14,9 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
 
     if $routeParams.recetteId
       Recette.get({recetteId: $routeParams.recetteId},
-        ( (recette)-> $scope.recette = recette ),
+        ( (recette, ingredients)->
+          $scope.recette = recette.recette
+          $scope.ingredients = recette.ingredients),
         ( (httpResponse)->
           $scope.recette = null
           flash.error   = "Il n'y a pas de recette avec l'ID: #{$routeParams.recipeId}"
