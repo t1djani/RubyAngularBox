@@ -13,7 +13,7 @@ describe RecettesController do
     end
     it "return the right recipe if exist" do
       get "show", id: @recipe1.id
-      expect(response.body).to have_node(:id).with(@recipe1.id)
+      expect(subject).to have_node(:id).with(@recipe1.id)
     end
     it "doesnt return wrong recipe" do
       get "show", id: @recipe1.id
@@ -31,39 +31,60 @@ describe RecettesController do
       @recipe2 = Recette.create(name: "test222", instructions: "fsdqfs")
       @recipe3 = Recette.create(name: "recipe3", instructions: "fsdqsdqss")
       @recipe4 = Recette.create(name: "recipe4", instructions: "fsdqffvcvxcs")
+      @recipe5 = Recette.create(name: "recipe5", instructions: "fsdqfsdfqdffvcvxcs")
     end
+
+    subject { response.body }
+
     it "return http success" do
       get "index"
       expect(response).to be_success
     end
-    it "if no params return two recipes" do
+
+    it "" do
       get "index"
-      expect(response.body).to have_node(:id).with(@recipe1.id)
-      expect(response.body).to have_node(:id).with(@recipe2.id)
-      expect(response.body).not_to have_node(:id).with(@recipe3.id)
+      expect(subject).to have_node(:id).with(@recipe1.id)
+      expect(subject).to have_node(:id).with(@recipe2.id)
+      expect(subject).not_to have_node(:id).with(@recipe3.id)
     end
+
     it "if no params page return page = 1" do
       get "index", page: nil
-      expect(response.body).to have_node(:id).with(@recipe1.id)
-      expect(response.body).to have_node(:id).with(@recipe2.id)
-      expect(response.body).not_to have_node(:id).with(@recipe4.id)
+      expect(subject).to have_node(:id).with(@recipe1.id)
+      expect(subject).to have_node(:id).with(@recipe2.id)
+      expect(subject).not_to have_node(:id).with(@recipe4.id)
     end
+
     it "if page = 2" do
       get "index", page: 2
-      expect(response.body).to have_node(:id).with(@recipe3.id)
-      expect(response.body).not_to have_node(:id).with(@recipe1.id)
+      expect(subject).to have_node(:id).with(@recipe3.id)
+      expect(subject).not_to have_node(:id).with(@recipe1.id)
     end
-    it "if there is keyword" do
+
+    it "if there is params keyword" do
       get "index", keywords: "test"
-      expect(response.body).to have_node(:name).with("test222")
-      expect(response.body).to have_node(:name).with("Test")
-      expect(response.body).not_to have_node(:name).with(@recipe4.name)
+      expect(subject).to have_node(:name).with("test222")
+      expect(subject).to have_node(:name).with("Test")
+      expect(subject).not_to have_node(:name).with(@recipe4.name)
     end
+
     it "if there is no keywords" do
       get "index", keywords: nil
-      expect(response.body).to have_node(:name).with("test222")
-      expect(response.body).to have_node(:name).with("Test")
-      expect(response.body).not_to have_node(:name).with(@recipe4.name)
+      expect(subject).to have_node(:name).with("test222")
+      expect(subject).to have_node(:name).with("Test")
+      expect(subject).not_to have_node(:name).with(@recipe4.name)
+    end
+
+    it "pagination with search page = 1" do
+      get "index", keywords: "recipe", page: 1
+      expect(subject).to have_node(:name).with(@recipe3.name)
+      expect(subject).not_to have_node(:name).with(@recipe5.name)
+    end
+
+    it "pagination with search page = 2" do
+      get "index", keywords: "recipe", page: 2
+      expect(subject).to have_node(:name).with(@recipe5.name)
+      expect(subject).not_to have_node(:name).with(@recipe3.name)
     end
   end
 end

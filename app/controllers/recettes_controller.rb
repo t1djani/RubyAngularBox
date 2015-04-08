@@ -4,12 +4,14 @@ class RecettesController < ApplicationController
   def index
     recettes = if params[:keywords]
                  Recette.where('name like ?',"%#{params[:keywords]}%")
+                  .paginate(page: params[:page], per_page: 2)
                else
                  Recette.paginate(page: params[:page], per_page: 2)
                end
+    totalItem = Recette.all.count
     render json: {
       recettes: recettes,
-      totalItem: recettes.count
+      totalItem: totalItem
     }
   end
 
