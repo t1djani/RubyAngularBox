@@ -21,12 +21,8 @@
       .controls
         %span{ class: "btn btn-default btn-file" }
           %input{ type: "file", ng_model: "recette.image", name: "image", nv_file_select: "", uploader: "uploader"}
-        %ul#file
-          %li{ ng_repeat: "item in uploader.queue" }
-            Name:
-            %span{ ng_bind: "item.file.name" }
-            %button.btn.btn-default{ ng_click: "item.upload()" } Upload and Send
 
     .control-group
       .controls
+        %button.btn.btn-success{ ng_click: "save()" } Sauvegarder
         %button.btn.btn-default{ ng_click: "cancel()" } Revenir

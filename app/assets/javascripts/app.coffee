@@ -26,15 +26,15 @@ box.config ( $routeProvider,flashProvider ) ->
       ).when('/recettes/new',
         templateUrl: "form.html"
         controller: 'RecetteController'
-      ).when('/recettes/:recetteId',
+      ).when('/recettes/:id',
         templateUrl: "show.html"
         controller: 'RecetteController'
-      ).when('/recettes/:recetteId/edit',
+      ).when('/recettes/:id/edit',
         templateUrl: "form.html"
         controller: 'RecetteController'
       )
 
 
 controllers = angular.module 'controllers', []
-directives = angular.module 'directives', []
-filters = angular.module 'filters', ['ngSanitize']
+directives  = angular.module 'directives', []
+filters     = angular.module 'filters', ['ngSanitize']

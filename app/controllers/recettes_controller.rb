@@ -29,17 +29,20 @@ class RecettesController < ApplicationController
   end
 
   def create
-    @recette = Recette.new()
-    @recette.name = params[:name]
-    @recette.instructions = params[:instructions]
-    @recette.image = params[:image]
-    @recette.save!
+    recette = Recette.new()
+    recette.name         = params[:name]
+    recette.instructions = params[:instructions]
+    recette.image        = params[:image]
+    recette.save!
     head :no_content
   end
 
   def update
-    recette = Recette.find(params[:id])
-    recette.update_attributes(params.require(:recette).permit(:name,:instructions))
+    recette = Recette.find( params[:id] )
+    recette.name         = params[:name]
+    recette.instructions = params[:instructions]
+    recette.image        = params[:image] if params[:image]
+    recette.save!
     head :no_content
   end
 
