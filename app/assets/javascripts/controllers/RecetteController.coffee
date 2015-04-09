@@ -9,7 +9,7 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
       }
     )
 
-    # Instancier la classe d'upload
+
     $scope.uploader = new FileUploader({url: 'recettes', alias: "image"})
 
     if $routeParams.recetteId
@@ -31,6 +31,11 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
       item.formData.push
         'name': $scope.recette.name
         'instructions': $scope.recette.instructions
+
+    $scope.uploader.onSuccessItem = (item) ->
+      alert "Recette ajouté !"
+      $location.path "/"
+
 
     $scope.back   = -> $location.path "/"
     $scope.edit   = -> $location.path "/recettes/#{$scope.recette.id}/edit"
