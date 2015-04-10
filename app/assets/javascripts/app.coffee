@@ -6,18 +6,11 @@ box = angular.module("boxmaster", [
   'directives',
   'filters',
   'ui.bootstrap',
-  'angularFileUpload',
-  'angular-flash.service',
-  'angular-flash.flash-alert-directive'
+  'angularFileUpload'
 ])
 
 
-box.config ( $routeProvider,flashProvider ) ->
-
-    flashProvider.errorClassnames.push "alert-danger"
-    flashProvider.warnClassnames.push "alert-warning"
-    flashProvider.infoClassnames.push "alert-info"
-    flashProvider.successClassnames.push "alert-success"
+box.config ( $routeProvider ) ->
 
     $routeProvider
       .when('/',

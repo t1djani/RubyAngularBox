@@ -1,6 +1,6 @@
 controllers = angular.module('controllers')
 
-controllers.controller "RecetteController", ($scope,$routeParams,$resource,$location, flash, FileUploader) ->
+controllers.controller "RecetteController", ($scope,$routeParams,$resource,$location, FileUploader, $modal, $log) ->
 
     Recette = $resource '/recettes/:id', { id: '@id', format: 'json' },
     {
@@ -16,10 +16,31 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
           $scope.ingredients = recette.ingredients ),
         ( (httpResponse) ->
           $scope.recette = null
-          flash.error   = "Il n'y a pas de recette avec l'ID: #{ $routeParams.id }"
+          $scope.alerts =
+            type: 'danger'
+            msg: 'Oh snap! La recette que vous cherchez n\'existe pas'
         )
     else
       $scope.recette = {}
+
+    $scope.open = ->
+      modalInstance = $modal.open(
+        templateUrl: 'delete.html'
+        controller:
+          ($scope, $modalInstance) ->
+            $scope.ok = ->
+              $modalInstance.close()
+
+            $scope.cancel = ->
+              $modalInstance.dismiss 'cancel'
+      )
+
+      modalInstance.result.then ( () ->
+        Recette.get( id: $scope.recette.id, (recette) ->
+          recette.id           = $scope.recette.id
+          recette.$delete( {}, -> $scope.back() )
+        )
+      )
 
     # Methodes
 
@@ -78,8 +99,3 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
         $location.path "/recettes/#{ $scope.recette.id }"
       else
         $location.path "/"
-
-    $scope.delete = ->
-      Recette.get id: $scope.recette.id, (recette) ->
-        recette.id           = $scope.recette.id
-        recette.$delete( {}, -> $scope.back() )

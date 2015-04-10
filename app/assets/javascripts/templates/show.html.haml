@@ -1,4 +1,5 @@
 .container
+  %alert{ ng_if: "alerts", type: "{{alerts.type}}" } {{alerts.msg}}
   .col-md-9
     .thumbnail
       %img.img-responsive#showImg{ src: "{{recette.image.url}}" }
@@ -9,4 +10,11 @@
         %p{ ng_repeat: "ingredient in ingredients" } {{ ingredient.name }}
     %button.btn.btn-default{ ng_click: "back()" } Back
     %button.btn.btn-default{ ng_click: "edit()" } Editer
-    %button.btn.btn-danger{ ng_click: "delete()" } Supprimer
+    %button.btn.btn-danger{ ng_click: "open()" } Supprimer
+
+    %script{ type: "text/ng-template", id: "delete.html" }
+      .modal-header
+        %h3{ class: "modal-title" } Voulez vous vraiment supprimer {{ recette.name }} ?
+      .modal-footer
+        %button.btn.btn-primary{ ng_click: "ok()" } OK
+        %button.btn.btn-warning{ ng_click: "cancel()" } Cancel
