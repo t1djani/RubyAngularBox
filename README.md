@@ -2,13 +2,16 @@
 
 Clone this repo
 
-Create Database with : 
-``` rake db:create```
+Check if you have ruby and ruby on rails installation on your machine
+
+Create Database with :
+``` rake db:setup```
 
 and run
-```rake db:migrate``` 
 
-Run 
+```rake db:migrate```
+
+Run
 
 ```bundle install```
 
