@@ -7,6 +7,6 @@
         %p{ ng_bind_html: "recette.instructions | nl2br" }
         %h4 Ingredients :
         %p{ ng_repeat: "ingredient in ingredients" } {{ ingredient.name }}
-    %button.btn.btn-info{ ng_click: "edit()" } Editer
+    %button.btn.btn-default{ ng_click: "back()" } Back
+    %button.btn.btn-default{ ng_click: "edit()" } Editer
     %button.btn.btn-danger{ ng_click: "delete()" } Supprimer
-    %button.btn.btn-info{ ng_click: "back()" } Back
