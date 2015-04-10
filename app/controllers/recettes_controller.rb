@@ -4,9 +4,9 @@ class RecettesController < ApplicationController
   def index
     recettes = if params[:keywords]
                  Recette.where('name like ?',"%#{params[:keywords]}%")
-                  .paginate(page: params[:page], per_page: 2)
+                  .paginate(page: params[:page], per_page: 3)
                else
-                 Recette.paginate(page: params[:page], per_page: 2)
+                 Recette.paginate(page: params[:page], per_page: 3)
                end
 
     totalItem = Recette.all.count
@@ -30,16 +30,19 @@ class RecettesController < ApplicationController
 
   def create
     @recette = Recette.new()
-    @recette.name = params[:name]
+    @recette.name         = params[:name]
     @recette.instructions = params[:instructions]
-    @recette.image = params[:image]
+    @recette.image        = params[:image]
     @recette.save!
     head :no_content
   end
 
   def update
-    recette = Recette.find(params[:id])
-    recette.update_attributes(params.require(:recette).permit(:name,:instructions))
+    recette = Recette.find( params[:id] )
+    recette.name         = params[:name]
+    recette.instructions = params[:instructions]
+    recette.image        = params[:image] if params[:image]
+    recette.save!
     head :no_content
   end
 

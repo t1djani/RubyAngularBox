@@ -1,7 +1,8 @@
 %div.container
-  -# %input{type: "checkbox", ng_model: "show"}
+
   .row.form-group
-    .col-xs-12.col-md-6{ listing: "listing", ng_repeat: 'recette in recettes | filtre:show | orderBy:"name"', recette: "recette" }
-    %pagination{ total_items: "pagination.totalItems",
-      ng: { model: "pagination.currentPage", change: "pageChanged()" },
-      items_per_page: "pagination.perPage" }
+    .col-xs-12.col-md-4{ listing: "listing", ng_repeat: 'recette in recettes | filtre:show | orderBy:"name"', recette: "recette" }
+
+  %pagination{ total_items: "pagination.totalItems",
+    ng: { model: "pagination.currentPage", change: "pageChanged()" },
+    items_per_page: "pagination.perPage" }

@@ -1,6 +1,6 @@
 .panel.panel-default
   .panel-image
-    %img.panel-image-preview{ src: "{{recette.image.url}}" }
+    %img.panel-image-preview{ src: "{{recette.image.thumb.url}}" }
   .panel-body
     %h4
       %a{ href: "", ng_click: "view(recette.id)" } {{recette.name}}

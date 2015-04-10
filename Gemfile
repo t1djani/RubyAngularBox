@@ -28,6 +28,7 @@ gem 'sass', '3.2.19'
 gem 'haml-rails'
 gem 'will_paginate'
 gem 'carrierwave'
+gem "mini_magick"
 gem 'angularjs-file-upload-rails', '~> 1.1.6'
 gem 'active_model_serializers'
 
