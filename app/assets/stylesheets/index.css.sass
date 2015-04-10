@@ -1,0 +1,54 @@
+@import url("http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css")
+
+.panel-image
+  position: relative
+  img.panel-image-preview
+    border-radius: 4px 4px 0px 0px
+    padding-left: 20px
+    height: 200px
+    width: 340px
+  label
+    display: block
+    position: absolute
+    top: 0px
+    left: 0px
+    height: 100%
+    width: 100%
+
+.panel-heading ~ .panel-image img.panel-image-preview
+  border-radius: 0px
+
+.panel-body
+  overflow: hidden
+
+.panel-image ~
+  input[type=checkbox]
+    position: absolute
+    top: -30px
+    z-index: -1
+    ~ .panel-body
+      height: 0px
+      padding: 0px
+    &:checked ~ .panel-body
+      height: auto
+      padding: 15px
+  .panel-footer a
+    padding: 0px 10px
+    font-size: 1.3em
+    color: rgb(100, 100, 100)
+
+#showImg
+  width: 800px
+  height: 400px
+
+#preview
+  width: 150px
+  height: 100px
+
+#form
+  width: 800px
+  margin: 0 auto
+  .control-group
+    padding-bottom: 10px
+    #file
+      padding-top: 5px
