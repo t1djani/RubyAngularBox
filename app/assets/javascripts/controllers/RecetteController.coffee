@@ -7,6 +7,8 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
       'update': { method: 'PUT' }
     }
 
+    Ingredient = $resource '/ingredients/:id', { id: '@id', format: 'json' }
+
     $scope.uploader = new FileUploader( url: 'recettes', alias: "image" )
 
     if $routeParams.id
@@ -63,6 +65,7 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
           recette = new Recette()
           recette.name         = $scope.recette.name
           recette.instructions = $scope.recette.instructions
+          recette.ingredients = $scope.recette.ingredients
           recette.$save( {}, -> $scope.back() )
 
       else

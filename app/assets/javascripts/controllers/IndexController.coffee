@@ -11,11 +11,11 @@ controllers.controller "IndexController", ($scope,$routeParams,$location,$resour
     $scope.show = false
 
     if $routeParams.keywords
-      Recettes.query keywords: $routeParams.keywords, (data) ->
+      Recettes.query keywords: $routeParams.keywords, ( data ) ->
         $scope.recettes = data.recettes
         $scope.pagination.totalItems = data.searchItem
     else
-      $scope.recettes = Recettes.query (data) ->
+      $scope.recettes = Recettes.query ( data ) ->
         $scope.recettes = data.recettes
         $scope.pagination.totalItems = data.totalItem
 

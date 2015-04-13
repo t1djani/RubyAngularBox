@@ -1,23 +1,30 @@
 %form{ role: "form", multipart: "true" }
   %fieldset#form
-    .control-group{ ng_class: "{ 'has-warning has-feedback':errors.name }" }
+    .control-group
       %label.control-label{ for: "name" }
         Nom
       .controls
         %input.form-control#name{ name: "name", ng_model: "recette.name", placeholder: "ex. Patates provençale", type: "text" }
 
-    .control-group{ ng_class: "{ 'has-warning has-feedback':errors.name }" }
+    .control-group
       %label.control-label{ for: "instructions" }
         Instructions
       .controls
         %textarea.form-control#instructions{ name: "instructions", ng_model: "recette.instructions", placeholder: "ex. Cuire 30min" }
           :preserve
 
+    .control-group
+      %label.control-label{ for: "instructions" }
+        Définissez les ingrédients
+      .controls
+        %input.form-contro{ id: "list", type: "text", ng_model: "ingredient.name", required: "" }
+          :preserve
+
     .row{ ng_if: "recette.image", style: "padding-bottom: 2%" }
       .col-md-3.col-sm-4
         %img#preview{ src: "{{ recette.image.url }}" }
 
-    .control-group{ ng_class: "{ 'has-warning has-feedback':errors.name }", ng_if: "recette.name && recette.instructions" }
+    .control-group{ ng_if: "recette.name && recette.instructions" }
       .controls
         %span{ class: "btn btn-default btn-file" }
           %input{ type: "file", ng_model: "recette.image", name: "image", nv_file_select: "", uploader: "uploader"}
