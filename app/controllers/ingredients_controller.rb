@@ -1,5 +1,8 @@
 class IngredientsController < ApplicationController
   def index
+    render json: {
+      ingredients: Ingredient.all
+    }
   end
 
   def create
