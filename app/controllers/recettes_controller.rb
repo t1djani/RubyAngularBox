@@ -33,7 +33,10 @@ class RecettesController < ApplicationController
     @recette.name         = params[:name]
     @recette.instructions = params[:instructions]
     @recette.image        = params[:image]
-    @recette.ingredients  = params[:ingredients]
+    params[:ingredients].each do |ingredient_str|
+      ingredient = Ingredient.find_or_create_by(name: ingredient_str)
+      @recette.ingredients <<  ingredient
+    end
     @recette.save!
     head :no_content
   end
@@ -43,6 +46,11 @@ class RecettesController < ApplicationController
     recette.name         = params[:name]
     recette.instructions = params[:instructions]
     recette.image        = params[:image] if params[:image]
+    recette.ingredients.delete_all
+    params[:ingredients].each do |ingredient_str|
+      ingredient = Ingredient.find_or_create_by(name: ingredient_str)
+      recette.ingredients <<  ingredient
+    end
     recette.save!
     head :no_content
   end

@@ -1,4 +1,4 @@
-controllers = angular.module('controllers')
+controllers = angular.module 'controllers'
 
 controllers.controller "RecetteController", ($scope,$routeParams,$resource,$location, FileUploader, $modal, $log, Ingredient, Recette) ->
 
@@ -12,7 +12,7 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
 
     if $routeParams.id
       Recette.get { id: $routeParams.id },
-        ( (recette, ingredients) ->
+        ( (recette) ->
           $scope.recette = recette.recette
           $scope.recette.ingredients = recette.ingredients.map ( ingredient ) -> ingredient.name ),
         ( (httpResponse) ->
@@ -48,7 +48,6 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
 
 
     $scope.save = ->
-      debugger
       if $scope.uploader.queue.length is 0
         # --- NO FILE TO UPLOAD ---
         # We'll deal with the save/update using ngResource
@@ -59,6 +58,7 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
             recette.id           = $scope.recette.id
             recette.name         = $scope.recette.name
             recette.instructions = $scope.recette.instructions
+            recette.ingredients  = $scope.recette.ingredients
             recette.$update( {}, -> $scope.back() )
           )
         else

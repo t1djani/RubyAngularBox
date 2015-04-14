@@ -1,15 +1,15 @@
 controllers = angular.module('controllers')
 
-controllers.controller "IndexController", ($scope,$routeParams,$location,$resource, Recettes) ->
+controllers.controller "IndexController", ($scope,$routeParams,$location,$resource, Recette) ->
 
     $scope.show = false
 
     if $routeParams.keywords
-      Recettes.query keywords: $routeParams.keywords, ( data ) ->
+      Recette.query keywords: $routeParams.keywords, ( data ) ->
         $scope.recettes = data.recettes
         $scope.pagination.totalItems = data.searchItem
     else
-      $scope.recettes = Recettes.query ( data ) ->
+      $scope.recettes = Recette.query ( data ) ->
         $scope.recettes = data.recettes
         $scope.pagination.totalItems = data.totalItem
 

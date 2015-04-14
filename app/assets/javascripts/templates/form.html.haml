@@ -14,7 +14,7 @@
           :preserve
 
     .control-group
-      %ui_select{ multiple: "multiple", ng_model: "recette.ingredients", name: "ingredients", style: "width: 300px;", tagging: "", tagging_label: "(custom 'new' label)", theme: "bootstrap", title: "Choose a color" }
+      %ui_select{ multiple: "multiple", ng_model: "recette.ingredients", style: "width: 300px;", tagging: "", tagging_label: "(custom 'new' label)", theme: "bootstrap", title: "Choose a color" }
         %ui_select_match{ placeholder: "Choisissez vos ingredients..." }
           {{ $item }}
         %ui_select_choices{ repeat: "ingredient in availableIngredients | filter:$select.search"}
