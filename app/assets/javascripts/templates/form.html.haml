@@ -14,11 +14,13 @@
           :preserve
 
     .control-group
-      %label.control-label{ for: "instructions" }
-        Définissez les ingrédients
-      .controls
-        %input.form-contro{ id: "list", type: "text", ng_model: "ingredient.name", required: "" }
-          :preserve
+      %ui_select{ multiple: "multiple", ng_model: "recette.ingredients", name: "ingredients", style: "width: 300px;", tagging: "", tagging_label: "(custom 'new' label)", theme: "bootstrap", title: "Choose a color" }
+        %ui_select_match{ placeholder: "Choisissez vos ingredients..." }
+          {{ $item }}
+        %ui_select_choices{ repeat: "ingredient in availableIngredients | filter:$select.search"}
+          {{ ingredient }}
+
+
 
     .row{ ng_if: "recette.image", style: "padding-bottom: 2%" }
       .col-md-3.col-sm-4

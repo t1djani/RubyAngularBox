@@ -1,12 +1,6 @@
 controllers = angular.module('controllers')
 
-controllers.controller "IndexController", ($scope,$routeParams,$location,$resource) ->
-
-    # Recupérer les recettes en db via json
-    Recettes = $resource '/recettes', { recettes: 'recettes', format: 'json' },
-    {
-      'query': { method: 'get', isArray: false }
-    }
+controllers.controller "IndexController", ($scope,$routeParams,$location,$resource, Recettes) ->
 
     $scope.show = false
 

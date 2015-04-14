@@ -4,7 +4,10 @@ box = angular.module("boxmaster", [
   'ngResource',
   'controllers',
   'directives',
+  'services',
   'filters',
+  'ngSanitize',
+  'ui.select',
   'ui.bootstrap',
   'angularFileUpload'
 ])
@@ -30,4 +33,5 @@ box.config ( $routeProvider ) ->
 
 controllers = angular.module 'controllers', []
 directives  = angular.module 'directives', []
-filters     = angular.module 'filters', ['ngSanitize']
+services  = angular.module 'services', []
+filters     = angular.module 'filters', []

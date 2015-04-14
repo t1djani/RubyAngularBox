@@ -1,21 +1,20 @@
 controllers = angular.module('controllers')
 
-controllers.controller "RecetteController", ($scope,$routeParams,$resource,$location, FileUploader, $modal, $log) ->
+controllers.controller "RecetteController", ($scope,$routeParams,$resource,$location, FileUploader, $modal, $log, Ingredient, Recette) ->
 
-    Recette = $resource '/recettes/:id', { id: '@id', format: 'json' },
-    {
-      'update': { method: 'PUT' }
-    }
-
-    Ingredient = $resource '/ingredients/:id', { id: '@id', format: 'json' }
+    $scope.availableIngredients = []
 
     $scope.uploader = new FileUploader( url: 'recettes', alias: "image" )
+
+    Ingredient.query (data) ->
+      $scope.availableIngredients = data.ingredients.map ( ingredient ) -> ingredient.name
+
 
     if $routeParams.id
       Recette.get { id: $routeParams.id },
         ( (recette, ingredients) ->
           $scope.recette = recette.recette
-          $scope.ingredients = recette.ingredients ),
+          $scope.recette.ingredients = recette.ingredients.map ( ingredient ) -> ingredient.name ),
         ( (httpResponse) ->
           $scope.recette = null
           $scope.alerts =
@@ -24,6 +23,9 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
         )
     else
       $scope.recette = {}
+      $scope.recette.ingredients = []
+
+    # Methodes
 
     $scope.open = ->
       modalInstance = $modal.open(
@@ -44,9 +46,9 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
         )
       )
 
-    # Methodes
 
     $scope.save = ->
+      debugger
       if $scope.uploader.queue.length is 0
         # --- NO FILE TO UPLOAD ---
         # We'll deal with the save/update using ngResource
@@ -89,7 +91,6 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
       item.formData.push
         'name': $scope.recette.name
         'instructions': $scope.recette.instructions
-
 
     $scope.back   = ->
       $location.path "/"

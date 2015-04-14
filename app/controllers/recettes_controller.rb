@@ -33,6 +33,7 @@ class RecettesController < ApplicationController
     @recette.name         = params[:name]
     @recette.instructions = params[:instructions]
     @recette.image        = params[:image]
+    @recette.ingredients  = params[:ingredients]
     @recette.save!
     head :no_content
   end
