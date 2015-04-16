@@ -2,14 +2,13 @@ controllers = angular.module('controllers')
 
 controllers.controller "IndexController", ($scope,$routeParams,$location,$resource, Recette) ->
 
-    $scope.show = false
-
     if $routeParams.keywords
       Recette.query keywords: $routeParams.keywords, ( data ) ->
         $scope.recettes = data.recettes
         $scope.pagination.totalItems = data.searchItem
     else
-      $scope.recettes = Recette.query ( data ) ->
+      $scope.recettes = []
+      Recette.query ( data ) ->
         $scope.recettes = data.recettes
         $scope.pagination.totalItems = data.totalItem
 
@@ -23,4 +22,4 @@ controllers.controller "IndexController", ($scope,$routeParams,$location,$resour
     }
 
     $scope.pageChanged = ->
-      Recettes.query( page: $scope.pagination.currentPage, (results)-> $scope.recettes = results.recettes )
+      Recette.query( page: $scope.pagination.currentPage, (results)-> $scope.recettes = results.recettes )

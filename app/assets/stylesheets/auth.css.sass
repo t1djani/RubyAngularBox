@@ -1,0 +1,154 @@
+/*
+ *  Note: It is best to use a less version of this file ( see http://css2less.cc
+ *  For the media queries use @screen-sm-min instead of 768px.
+ *  For .omb_spanOr use @body-bg instead of white.
+
+@media (min-width: 768px)
+  .omb_row-sm-offset-3 div:first-child[class*="col-"]
+    margin-left: 25%
+    #submit
+      margin-top: 6%
+    .input-group
+      margin-top: 3%
+
+.omb_login
+  margin-top: 6%
+  .omb_authTitle
+    text-align: center
+    line-height: 300%
+  .omb_socialButtons
+    margin-bottom: 3%
+    a
+      color: white
+      // In yourUse @body-bg
+      opacity: 0.9
+      &:hover
+        color: white
+        opacity: 1
+    .omb_btn-facebook
+      background: #3b5998
+    .omb_btn-twitter
+      background: #00aced
+    .omb_btn-google
+      background: #c32f10
+  .omb_loginOr
+    position: relative
+    font-size: 1.5em
+    color: #aaa
+    margin-top: 1em
+    margin-bottom: 1em
+    padding-top: 0.5em
+    padding-bottom: 0.5em
+    .omb_hrOr
+      background-color: #cdcdcd
+      height: 1px
+      margin-top: 0px !important
+      margin-bottom: 0px !important
+    .omb_spanOr
+      display: block
+      position: absolute
+      left: 50%
+      top: -0.6em
+      margin-left: -1.5em
+      background-color: white
+      width: 3em
+      text-align: center
+  .omb_loginForm
+    .input-group.i
+      width: 2em
+    .help-block
+      color: red
+
+@media (min-width: 768px)
+  .omb_login .omb_forgotPwd
+    text-align: right
+    margin-top: 10px
+
+/***
+ *User Profile Sidebar by @keenthemes
+ *A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
+ *Licensed under MIT
+ ***
+
+body
+  background: #F1F3FA
+
+/* Profile container
+
+.profile
+  margin: 20px 0
+
+/* Profile sidebar
+
+.profile-sidebar
+  padding: 20px 0 10px 0
+  background: #fff
+
+.profile-userpic img
+  float: none
+  margin: 0 auto
+  width: 50%
+  height: 50%
+  -webkit-border-radius: 50% !important
+  -moz-border-radius: 50% !important
+  border-radius: 50% !important
+
+.profile-usertitle
+  text-align: center
+  margin-top: 20px
+
+.profile-usertitle-name
+  color: #5a7391
+  font-size: 16px
+  font-weight: 600
+  margin-bottom: 7px
+
+.profile-usertitle-job
+  text-transform: uppercase
+  color: #5b9bd1
+  font-size: 12px
+  font-weight: 600
+  margin-bottom: 15px
+
+.profile-userbuttons
+  text-align: center
+  margin-top: 10px
+  .btn
+    text-transform: uppercase
+    font-size: 11px
+    font-weight: 600
+    padding: 6px 15px
+    margin-right: 5px
+    &:last-child
+      margin-right: 0px
+
+.profile-usermenu
+  margin-top: 30px
+  ul li
+    border-bottom: 1px solid #f0f4f7
+    &:last-child
+      border-bottom: none
+    a
+      color: #93a3b5
+      font-size: 14px
+      font-weight: 400
+      i
+        margin-right: 8px
+        font-size: 14px
+      &:hover
+        background-color: #fafcfd
+        color: #5b9bd1
+    &.active
+      border-bottom: none
+      a
+        color: #5b9bd1
+        background-color: #f6f9fb
+        border-left: 2px solid #5b9bd1
+        margin-left: -2px
+
+/* Profile Content
+
+.profile-content
+  padding: 20px
+  background: #fff
+  min-height: 460px

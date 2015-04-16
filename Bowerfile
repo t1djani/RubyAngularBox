@@ -1,6 +1,7 @@
 asset 'angular'
 asset 'angular-route'
 asset 'angular-resource'
+asset 'angular-devise'
 asset 'angularjs-file-upload'
 asset 'angular-mocks'
 asset 'angular-sanitize'

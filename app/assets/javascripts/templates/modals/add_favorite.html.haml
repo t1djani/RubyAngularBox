@@ -1,0 +1,11 @@
+.modal-header
+  %h3.modal-title Dans quel carnet voulez-vous ajouter cette recette ?
+.modal-body
+  %ul
+    %li{ ng_repeat: "carnet in carnets"}
+      %a.btn.btn-primary{ href: "", ng_click: "selected.carnet = carnet" } {{ carnet.book }}
+  %h1 Carnet : {{ selected.carnet.book }} 
+  %b
+.modal-footer
+  %button.btn.btn-primary{ ng_click: "ok()" } Valider
+  %button.btn.btn-warning{ ng_click: "cancel()" } Annuler

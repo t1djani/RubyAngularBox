@@ -9,13 +9,10 @@ class RecettesController < ApplicationController
                  Recette.paginate(page: params[:page], per_page: 3)
                end
 
-    totalItem = Recette.all.count
-    searchItem = recettes.count
-
     render json: {
       recettes: recettes,
-      totalItem: totalItem,
-      searchItem: searchItem
+      totalItem: Recette.all.count,
+      searchItem: recettes.count
     }
   end
 
@@ -29,15 +26,16 @@ class RecettesController < ApplicationController
   end
 
   def create
-    @recette = Recette.new()
-    @recette.name         = params[:name]
-    @recette.instructions = params[:instructions]
-    @recette.image        = params[:image]
+    recette = Recette.new()
+    recette.name         = params[:name]
+    recette.instructions = params[:instructions]
+    recette.image        = params[:image]
+    recette.user_id      = params[:user_id]
     params[:ingredients].each do |ingredient_str|
       ingredient = Ingredient.find_or_create_by(name: ingredient_str)
-      @recette.ingredients <<  ingredient
+      recette.ingredients <<  ingredient
     end
-    @recette.save!
+    recette.save!
     head :no_content
   end
 
@@ -59,5 +57,17 @@ class RecettesController < ApplicationController
     recette = Recette.find(params[:id])
     recette.destroy
     head :no_content
+  end
+
+  def add_to_carnet
+    recette = Recette.find( params[:id] )
+    carnet = Carnet.find( params[:carnet_id] )
+    if carnet.recettes.find_by(id: recette.id )
+      head :bad_request
+    else
+      carnet.recettes << recette
+      carnet.save
+      head :no_content
+    end
   end
 end

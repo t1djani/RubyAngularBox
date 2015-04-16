@@ -1,4 +1,4 @@
-directives = angular.module('directives')
+directives = angular.module 'directives'
 directives.directive 'listing', ($location)->
   restrict: "EA"
   scope:

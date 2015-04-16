@@ -1,0 +1,28 @@
+.container
+  .omb_login
+    .row.omb_row-sm-offset-3.omb_socialButtons
+      .col-xs-4.col-sm-2
+        %a.btn.btn-lg.btn-block.omb_btn-facebook{:href => "#"}
+          %i.fa.fa-facebook.visible-xs
+          %span.hidden-xs Facebook
+      .col-xs-4.col-sm-2
+        %a.btn.btn-lg.btn-block.omb_btn-twitter{:href => "#"}
+          %i.fa.fa-twitter.visible-xs
+          %span.hidden-xs Twitter
+      .col-xs-4.col-sm-2
+        %a.btn.btn-lg.btn-block.omb_btn-google{:href => "#"}
+          %i.fa.fa-google-plus.visible-xs
+          %span.hidden-xs Google+
+    .row.omb_row-sm-offset-3
+      .col-xs-12.col-sm-6
+        %form.omb_loginForm{ ng_submit: "login()" }
+          .input-group
+            %span.input-group-addon
+              %i.fa.fa-user
+            %input.form-control{ ng_model: "user.email", placeholder: "Email", type: "email" }
+          %span.help-block
+          .input-group
+            %span.input-group-addon
+              %i.fa.fa-lock
+            %input.form-control{ ng_model: "user.password", placeholder: "Mot de passe", type: "password" }
+          %button.btn.btn-lg.btn-primary.btn-block#submit{type: "submit", value: "Log In"} Connexion

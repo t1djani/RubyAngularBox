@@ -4,6 +4,7 @@
     "angular": "latest",
     "angular-route": "latest",
     "angular-resource": "latest",
+    "angular-devise": "latest",
     "angularjs-file-upload": "latest",
     "angular-mocks": "latest",
     "angular-sanitize": "latest",

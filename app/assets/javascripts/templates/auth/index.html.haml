@@ -1,0 +1,57 @@
+.container
+
+  .row.profile
+
+    .col-md-3
+      .profile-sidebar
+        .profile-usertitle
+          .profile-usertitle-name
+            {{ user.username | uppercase }}
+          .profile-usertitle-job
+            Commit de cuisine
+
+        .profile-userbuttons
+          %button.btn.btn-success.btn-sm{ type: "button"} Follow
+          %button.btn.btn-danger.btn-sm{ type: "button"} Message
+
+        .profile-usermenu
+          %ul.nav
+            %li
+              %a{ href: "" }
+                %i.glyphicon.glyphicon-ok
+                Carnets de recettes
+            %li
+              %a{ href: "" }
+                %i.glyphicon.glyphicon-user
+                Account Settings
+
+    .col-md-9
+      .profile-content{ ng_controller: "CarnetsController" }
+        %table.table{ ng_table: "tableParams" }
+          %thead
+            %tr
+              %th Name
+              %th Designation
+              %th Action
+          %tbody
+            %tr{ ng_repeat: " carnet in carnets | orderBy: 'name'", ng_if: "user.id == carnet.user_id" }
+              %td{ data_title: "'Name'"}
+                %span
+                %div
+                  %p{ href: "" } {{ carnet.book }}
+
+              %td{ data_title: "'Text'", width: "330"}
+                %span
+                %div
+                  %p {{ carnet.description }}
+
+              %td{ data_title: "'Actions'", width: "200"}
+                %a.btn.btn-primary.btn-xs{ href: "", ng_click: "view(carnet.id)" } Ouvrir
+                %a.btn.btn-primary.btn-xs{ href: "" } Edit
+                %a.btn.btn-default.btn-xs{ ng_click: "delete()" } Delete
+
+              %button.btn.btn-primary{ ng_click: "openAdd()" } Ajouter un carnet
+
+        %pagination{ total_items: "pagination.totalItems",
+          ng: { model: "pagination.currentPage", change: "pageChanged()" },
+          items_per_page: "pagination.perPage" }

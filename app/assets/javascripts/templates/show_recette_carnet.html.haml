@@ -8,7 +8,7 @@
         %p{ ng_bind_html: "recette.instructions | nl2br" }
         %h4 Ingredients :
         %p{ ng_repeat: "ingredient in recette.ingredients" } {{ ingredient }}
-    %button.btn.btn-default{ ng_click: "back()" } Back
+    %button.btn.btn-default{ ng_click: "backIndex()" } Back
     %button.btn.btn-default{ ng_if: "recette.user_id == user.id", ng_click: "edit()" } Editer
     %button.btn.btn-danger{ ng_if: "recette.user_id == user.id", ng_click: "open()" } Supprimer
     %button.btn.btn-warning{ ng_click: "favorite()" }

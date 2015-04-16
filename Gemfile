@@ -23,6 +23,7 @@ gem 'jbuilder', '~> 2.0'
 
 gem 'bower-rails'
 gem 'angular-rails-templates'
+gem 'devise', '~> 3.4.0'
 
 gem 'sass', '3.2.19'
 gem 'haml-rails'

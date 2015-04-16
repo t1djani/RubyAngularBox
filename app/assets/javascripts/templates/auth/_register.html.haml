@@ -1,0 +1,21 @@
+.container
+  .omb_login
+    .row.omb_row-sm-offset-3
+      .col-xs-12.col-sm-6
+
+        %form.omb_loginForm{ ng_submit: "register()" }
+          .input-group
+            %span.input-group-addon
+              %i.fa.fa-user
+            %input.form-control{ ng_model: "user.email", placeholder: "Email", type: "email"}
+
+          .input-group
+            %span.input-group-addon
+              %i.fa.fa-user
+            %input.form-control{ ng_model: "user.username", placeholder: "Username", type: "text"}
+
+          .input-group
+            %span.input-group-addon
+              %i.fa.fa-lock
+            %input.form-control{ ng_model: "user.password", placeholder: "Password", type: "password" }
+          %button.btn.btn-lg.btn-primary.btn-block#submit{type: "submit", value: "Log In"} Connexion

@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+
+  get '/carnets/modal', to: 'carnets#modal_carnets'
+  get '/recettes_carnet/:id', to: 'carnets#show_recette'
+
+  delete '/carnets/:id/delete_to_carnet', to: 'carnets#delete_to_carnet'
+
+  resources :carnets
+
+  devise_for :users
+  resources :users, only: [:show]
+
+
+  put '/recettes/:id/add_to_carnet', to: 'recettes#add_to_carnet'
+
   root 'home#index'
 
   resources :recettes

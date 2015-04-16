@@ -1,7 +1,7 @@
 %div.container
   %alert{ ng_if: "alerts", type: "{{alerts.type}}" } {{alerts.msg}}
   .row.form-group
-    .col-xs-12.col-md-4{ listing: "listing", ng_repeat: 'recette in recettes | filtre:show | orderBy:"name"', recette: "recette" }
+    .col-xs-12.col-md-4{ listing: "listing", ng_repeat: 'recette in recettes | orderBy:"name"', recette: "recette" }
 
   %pagination{ total_items: "pagination.totalItems",
     ng: { model: "pagination.currentPage", change: "pageChanged()" },

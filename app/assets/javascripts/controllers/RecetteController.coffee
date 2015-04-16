@@ -1,6 +1,6 @@
 controllers = angular.module 'controllers'
 
-controllers.controller "RecetteController", ($scope,$routeParams,$resource,$location, FileUploader, $modal, $log, Ingredient, Recette) ->
+controllers.controller "RecetteController", ($scope,$routeParams,$resource,$location, FileUploader, $modal, $log, Ingredient, Recette, Auth, Carnet) ->
 
     $scope.availableIngredients = []
 
@@ -9,6 +9,8 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
     Ingredient.query (data) ->
       $scope.availableIngredients = data.ingredients.map ( ingredient ) -> ingredient.name
 
+    Auth.currentUser().then ( user ) ->
+      $scope.user = user
 
     if $routeParams.id
       Recette.get { id: $routeParams.id },
@@ -29,7 +31,7 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
 
     $scope.open = ->
       modalInstance = $modal.open(
-        templateUrl: 'delete.html'
+        templateUrl: 'modals/delete.html'
         controller:
           ($scope, $modalInstance) ->
             $scope.ok = ->
@@ -46,6 +48,30 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
         )
       )
 
+    $scope.favorite = ->
+      modalInstance = $modal.open(
+        templateUrl: 'modals/add_favorite.html'
+        controller:
+          ( $scope, $modalInstance ) ->
+            Carnet.modalCarnet ( data ) ->
+              $scope.carnets = data.carnets
+
+            Recette.get { id: $routeParams.id },
+             ( data ) ->
+              $scope.recette = data.recette
+
+            $scope.selected =
+              carnet: $scope.carnets
+
+            $scope.ok = ->
+              Recette.addToCarnet( id: $scope.recette.id, carnet_id: $scope.selected.carnet.id ,( recette ) ->
+                recette.recettes = $scope.recette
+              )
+              $modalInstance.close()
+
+            $scope.cancel = ->
+              $modalInstance.dismiss 'cancel'
+      )
 
     $scope.save = ->
       if $scope.uploader.queue.length is 0
@@ -68,6 +94,7 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
           recette.name         = $scope.recette.name
           recette.instructions = $scope.recette.instructions
           recette.ingredients = $scope.recette.ingredients
+          recette.user_id     = $scope.user.id
           recette.$save( {}, -> $scope.back() )
 
       else
@@ -85,7 +112,9 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
 
         $scope.uploader.queue[0].name = $scope.recette.name
         $scope.uploader.queue[0].instructions = $scope.recette.instructions
+        $scope.uploader.queue[0].ingredients = $scope.recette.ingredients
         $scope.uploader.queue[0].upload()
+        debugger
 
     $scope.uploader.onAfterAddingFile = (item) ->
       item.formData.push
@@ -95,8 +124,7 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
     $scope.back   = ->
       $location.path "/"
 
-    $scope.edit   =
-      -> $location.path "/recettes/#{ $scope.recette.id }/edit"
+    $scope.edit   = -> $location.path "/recettes/#{ $scope.recette.id }/edit"
 
     $scope.cancel = ->
       if $scope.recette.id

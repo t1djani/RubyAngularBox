@@ -2,6 +2,7 @@ box = angular.module("boxmaster", [
   'templates',
   'ngRoute',
   'ngResource',
+  'Devise',
   'controllers',
   'directives',
   'services',
@@ -19,6 +20,12 @@ box.config ( $routeProvider ) ->
       .when('/',
         templateUrl: "index.html"
         controller: 'IndexController'
+      ).when('/login',
+        templateUrl: "auth/_login.html"
+        controller: 'AuthController'
+      ).when('/register',
+        templateUrl: "auth/_register.html"
+        controller: 'AuthController'
       ).when('/recettes/new',
         templateUrl: "form.html"
         controller: 'RecetteController'
@@ -28,7 +35,15 @@ box.config ( $routeProvider ) ->
       ).when('/recettes/:id/edit',
         templateUrl: "form.html"
         controller: 'RecetteController'
-      )
+      ).when('/users/:id',
+        templateUrl: "auth/index.html"
+        controller: 'AuthController'
+      ).when('/carnets/:id',
+        templateUrl: 'showCarnet.html'
+        controller: 'CarnetController'
+      ).when('/recettes_carnet/:id'
+        templateUrl: 'show_recette_carnet.html'
+        controller: 'RecetteController')
 
 
 controllers = angular.module 'controllers', []

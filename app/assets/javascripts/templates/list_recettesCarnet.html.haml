@@ -1,0 +1,9 @@
+.col-md-4
+  .thumbnail
+    %img.img-responsive{ src: "{{recette.image.thumb.url}}" }
+    .caption
+      %h3 {{ recette.name }}
+      %p {{ recette.instructions }}
+      %p{ align: "center"}
+        %a.btn.btn-primary.btn-block{ href: "", ng_click: "view(recette.id)" } Open
+        %a.btn.btn-danger.btn-block{ href: "", ng_click: "delete()"} Supprimer du carnet

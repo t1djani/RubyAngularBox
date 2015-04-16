@@ -1,12 +1,24 @@
-%div{ ng: {app: "boxmaster", controller: "IndexController"} }
+%div{ ng: {app: "boxmaster", controller: "IndexController" } }
   %nav.navbar.navbar-inverse
-    .container-fluid
+    .container-fluid{ ng_controller: "NavController" }
       %a.navbar-brand{ href: "/#/" } Home
-      %a.navbar-brand{ href: "/#/recettes/new" } Nouvelle recette
+      %a.navbar-brand{ ng_if: "signedIn()", href: "/#/recettes/new" } Nouvelle recette
 
       %form.navbar-form.navbar-right
         .form-group
           %input{ autofocus: "", name: "keywords", ng_model: "keywords", placeholder: "ex. Patate", type: "text" }
         %button.btn.btn-default{ ng_click: "search(keywords)" } Search
+
+      .collapse.navbar-collapse.pull-right
+        %ul.nav.navbar-nav
+          %li{ ng_hide: "signedIn()"}
+            %a{ href: "#/login"} Connexion
+          %li{ng_hide: "signedIn()"}
+            %a{ href: "#/register"} Inscription
+          %li{"ng-show" => "signedIn()"}
+            %a{ href: "", ng_click: "index(user.id)" } {{ user.username }}
+          %li{ ng_show: "signedIn()"}
+            %a{ ng_click: "logout()", href: ""} Déconnexion
+
   .view-container
     .view-frame.animate-view{ ng_view: "" }
