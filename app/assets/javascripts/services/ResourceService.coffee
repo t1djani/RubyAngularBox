@@ -24,7 +24,7 @@ services.factory 'Carnet', ($resource) ->
 
   $resource '/carnets/:id', { id: '@id', format: 'json' },
   {
-    'update': { method: 'PUT' }
+    'update': { method: 'PUT', url: 'carnets/:id' }
     'query': { method: 'get', isArray: false }
     'modalCarnet': { method: 'get', url: '/carnets/modal' }
     'deleteToCarnet': { method: 'delete', url: '/carnets/:id/delete_to_carnet' }

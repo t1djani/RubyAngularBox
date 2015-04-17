@@ -36,7 +36,7 @@ class CarnetsController < ApplicationController
     carnet = Carnet.find( params[:id] )
     carnet.book = params[:book]
     carnet.description = params[:description]
-    carnet.save
+    carnet.save!
     head :no_content
   end
 

@@ -28,16 +28,24 @@ directives.directive 'listCarnet', ($location, $modal, Carnet, $routeParams)->
     scope.editCarnet = ->
       modalInstance = $modal.open
         templateUrl: 'modals/edit_carnet.html'
+        resolve:
+          carnet: ->
+            scope.carnet
         controller:
-          ($scope, $modalInstance, $route) ->
+          ($scope, $modalInstance, $route, carnet) ->
+
+            $scope.carnet = carnet
 
             $scope.ok = ->
-              Carnet.update( id: scope.carnet.id, (carnet) ->
-                carnet.book = scope.carnet.book
-                carnet.description = scope.carnet.description
+              Carnet.get( id: $scope.carnet.id, (carnet) ->
+                carnet.id = $scope.carnet.id
+                carnet.book = $scope.carnet.book
+                carnet.description = $scope.carnet.description
+                carnet.$update( {}, ->
+                  $route.reload()
+                  $modalInstance.close()
+                )
               )
-              $route.reload()
-              $modalInstance.close()
 
             $scope.cancel = ->
               $modalInstance.dismiss 'cancel'
