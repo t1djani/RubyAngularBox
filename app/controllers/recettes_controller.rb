@@ -31,9 +31,12 @@ class RecettesController < ApplicationController
     recette.instructions = params[:instructions]
     recette.image        = params[:image]
     recette.user_id      = params[:user_id]
-    params[:ingredients].each do |ingredient_str|
-      ingredient = Ingredient.find_or_create_by(name: ingredient_str)
-      recette.ingredients <<  ingredient
+    if params[:ingredients]
+      ingredient = params[:ingredients].split(",")
+      ingredient.each do |ingredient_str|
+        ingredient = Ingredient.find_or_create_by(name: ingredient_str)
+        recette.ingredients <<  ingredient
+      end
     end
     recette.save!
     head :no_content

@@ -21,7 +21,7 @@ controllers.controller "RecetteController", ( $scope,$routeParams,$resource,$loc
           $scope.recette = null
           $scope.alerts =
             type: 'danger'
-            msg: 'Oh snap! La recette que vous cherchez n\'existe pas'
+            msg: 'Désolé ! La recette que vous cherchez n\'existe pas'
         )
     else
       $scope.recette = {}
@@ -113,13 +113,15 @@ controllers.controller "RecetteController", ( $scope,$routeParams,$resource,$loc
         $scope.uploader.queue[0].name = $scope.recette.name
         $scope.uploader.queue[0].instructions = $scope.recette.instructions
         $scope.uploader.queue[0].ingredients = $scope.recette.ingredients
+        $scope.uploader.queue[0].user_id = $scope.user.id
         $scope.uploader.queue[0].upload()
-        debugger
 
     $scope.uploader.onAfterAddingFile = ( item ) ->
       item.formData.push
         'name': $scope.recette.name
         'instructions': $scope.recette.instructions
+        'ingredients': $scope.recette.ingredients
+        'user_id': $scope.user.id
 
     $scope.back   = ->
       $location.path "/"
