@@ -1,0 +1,18 @@
+.modal-header
+  %h3 Nouveau nom: {{ carnet.book }}
+  %h3 Nouvelle description: {{ carnet.description }}
+.modal-body
+  %form.form-horizontal{ name: "carnetForm"}
+    .control-group
+      %label.control-label{ for: "name"} Name
+      .controls
+        %input#name.input-xlarge{ name: "name", ng_model: "carnet.book", placeholder: "Name", required: "", type: "text"}
+        .control-group
+          %label.control-label{ for: "designation"} Description
+          .controls
+            %input#name.input-xlarge{ type: "textarea", name: "description", ng_model: "carnet.description", required: "" }
+    .modal-footer
+      %button.btn.btn-primary{ ng_click: "ok()", type: "submit"}
+        %i.icon-white.icon-plus
+        Ajouter
+      %button.btn{ ng_click: "cancel()"} Annuler

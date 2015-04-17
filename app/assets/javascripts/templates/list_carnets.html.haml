@@ -1,0 +1,14 @@
+%td
+  %span
+  %div
+    %p{ href: "" } {{ carnet.book }}
+
+%td{ width: "330"}
+  %span
+  %div
+    %p {{ carnet.description }}
+
+%td{ width: "200"}
+  %a.btn.btn-primary.btn-xs{ href: "", ng_click: "view(carnet.id)" } Ouvrir
+  %a.btn.btn-primary.btn-xs{ href: "", ng_click: "editCarnet()" } Edit
+  %a.btn.btn-default.btn-xs{ ng_click: "delete()" } Delete

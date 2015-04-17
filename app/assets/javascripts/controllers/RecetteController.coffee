@@ -1,12 +1,12 @@
 controllers = angular.module 'controllers'
 
-controllers.controller "RecetteController", ($scope,$routeParams,$resource,$location, FileUploader, $modal, $log, Ingredient, Recette, Auth, Carnet) ->
+controllers.controller "RecetteController", ( $scope,$routeParams,$resource,$location, FileUploader, $modal, $log, Ingredient, Recette, Auth, Carnet ) ->
 
     $scope.availableIngredients = []
 
     $scope.uploader = new FileUploader( url: 'recettes', alias: "image" )
 
-    Ingredient.query (data) ->
+    Ingredient.query ( data ) ->
       $scope.availableIngredients = data.ingredients.map ( ingredient ) -> ingredient.name
 
     Auth.currentUser().then ( user ) ->
@@ -14,10 +14,10 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
 
     if $routeParams.id
       Recette.get { id: $routeParams.id },
-        ( (recette) ->
+        ( ( recette ) ->
           $scope.recette = recette.recette
           $scope.recette.ingredients = recette.ingredients.map ( ingredient ) -> ingredient.name ),
-        ( (httpResponse) ->
+        ( ( httpResponse ) ->
           $scope.recette = null
           $scope.alerts =
             type: 'danger'
@@ -33,7 +33,7 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
       modalInstance = $modal.open(
         templateUrl: 'modals/delete.html'
         controller:
-          ($scope, $modalInstance) ->
+          ( $scope, $modalInstance ) ->
             $scope.ok = ->
               $modalInstance.close()
 
@@ -42,7 +42,7 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
       )
 
       modalInstance.result.then ( () ->
-        Recette.get( id: $scope.recette.id, (recette) ->
+        Recette.get( id: $scope.recette.id, ( recette ) ->
           recette.id           = $scope.recette.id
           recette.$delete( {}, -> $scope.back() )
         )
@@ -80,7 +80,7 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
         if $scope.recette.id?
           # --- Update ---
           # OK OK OK OK OK
-          Recette.get( id: $scope.recette.id, (recette) ->
+          Recette.get( id: $scope.recette.id, ( recette ) ->
             recette.id           = $scope.recette.id
             recette.name         = $scope.recette.name
             recette.instructions = $scope.recette.instructions
@@ -116,7 +116,7 @@ controllers.controller "RecetteController", ($scope,$routeParams,$resource,$loca
         $scope.uploader.queue[0].upload()
         debugger
 
-    $scope.uploader.onAfterAddingFile = (item) ->
+    $scope.uploader.onAfterAddingFile = ( item ) ->
       item.formData.push
         'name': $scope.recette.name
         'instructions': $scope.recette.instructions

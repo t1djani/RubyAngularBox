@@ -32,6 +32,20 @@ class CarnetsController < ApplicationController
     }
   end
 
+  def update
+    carnet = Carnet.find( params[:id] )
+    carnet.book = params[:book]
+    carnet.description = params[:description]
+    carnet.save
+    head :no_content
+  end
+
+  def destroy
+    carnet = Carnet.find(params[:id])
+    carnet.destroy
+    head :no_content
+  end
+
   def show_recette
     recette = Recette.find( params[:id] )
     ingredients = recette.ingredients
@@ -56,12 +70,7 @@ class CarnetsController < ApplicationController
    if carnet
       recette.carnets.delete(carnet)
    end
-   header :ok
+   head :ok
   end
 
-  # def update
-  #   carnet = Carnet.find( params[:id] )
-  #   carnet.save!
-  #   head :no_content
-  # end
 end

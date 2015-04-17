@@ -1,6 +1,6 @@
 directives = angular.module 'directives'
 
-directives.directive 'carnet', ($location, $modal, Carnet, $routeParams)->
+directives.directive 'carnetRecettes', ($location, $modal, Carnet, $routeParams)->
   restrict: "EA"
   scope:
     recette: "="

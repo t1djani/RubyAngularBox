@@ -1,6 +1,6 @@
 controllers = angular.module 'controllers'
 
-controllers.controller "CarnetsController", ($scope,$routeParams,$location,$resource,$modal, $log, Carnet, Auth) ->
+controllers.controller "CarnetsController", ( $scope,$routeParams,$location,$resource,$modal,$log,Carnet,Auth ) ->
 
   Carnet.query ( data ) ->
     $scope.carnets = data.carnets
@@ -18,7 +18,7 @@ controllers.controller "CarnetsController", ($scope,$routeParams,$location,$reso
     modalInstance = $modal.open(
       templateUrl: 'modals/add_carnet_modal.html'
       controller:
-        ($scope, $modalInstance) ->
+        ( $scope, $modalInstance,$route ) ->
           Carnet.query ( data ) ->
             $scope.carnets = data.carnets
 
@@ -27,6 +27,7 @@ controllers.controller "CarnetsController", ($scope,$routeParams,$location,$reso
             carnet.book         = $scope.carnets.book
             carnet.description = $scope.carnets.description
             carnet.$save()
+            $route.reload()
             $modalInstance.close()
 
           $scope.cancel = ->
@@ -38,7 +39,4 @@ controllers.controller "CarnetsController", ($scope,$routeParams,$location,$reso
     )
 
   $scope.pageChanged = ->
-    Carnet.query( page: $scope.pagination.currentPage, (results)-> $scope.carnets = results.carnets )
-
-  $scope.view = (carnetId) ->
-    $location.path "/carnets/#{carnetId}"
+    Carnet.query( page: $scope.pagination.currentPage, ( results ) -> $scope.carnets = results.carnets )

@@ -28,4 +28,5 @@ services.factory 'Carnet', ($resource) ->
     'query': { method: 'get', isArray: false }
     'modalCarnet': { method: 'get', url: '/carnets/modal' }
     'deleteToCarnet': { method: 'delete', url: '/carnets/:id/delete_to_carnet' }
+    'delete': { method: 'delete', url: '/carnets/:id' }
   }

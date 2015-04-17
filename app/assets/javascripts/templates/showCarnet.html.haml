@@ -1,7 +1,7 @@
 %div.container
   %alert{ ng_if: "alerts", type: "{{alerts.type}}" } {{alerts.msg}}
   .row
-    %ul.thumbnails{ carnet: "carnet", ng_repeat: 'recette in carnet.recettes | orderBy:"name"', recette: "recette" }
+    %ul.thumbnails{ carnet_recettes: "", ng_repeat: 'recette in carnet.recettes | orderBy:"name"', recette: "recette" }
 
   %pagination{ total_items: "pagination.totalItems",
     ng: { model: "pagination.currentPage", change: "carnetChanged()" },

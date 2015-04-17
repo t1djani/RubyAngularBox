@@ -27,30 +27,16 @@
 
     .col-md-9
       .profile-content{ ng_controller: "CarnetsController" }
-        %table.table{ ng_table: "tableParams" }
+        %table.table
           %thead
             %tr
               %th Name
               %th Designation
               %th Action
           %tbody
-            %tr{ ng_repeat: " carnet in carnets | orderBy: 'name'", ng_if: "user.id == carnet.user_id" }
-              %td{ data_title: "'Name'"}
-                %span
-                %div
-                  %p{ href: "" } {{ carnet.book }}
+            %tr{ list_carnet: "", ng_repeat: " carnet in carnets | orderBy: 'name'", ng_if: "user.id == carnet.user_id", carnet: 'carnet' }
+            %button.btn.btn-primary{ ng_click: "openAdd()" } Ajouter un carnet
 
-              %td{ data_title: "'Text'", width: "330"}
-                %span
-                %div
-                  %p {{ carnet.description }}
-
-              %td{ data_title: "'Actions'", width: "200"}
-                %a.btn.btn-primary.btn-xs{ href: "", ng_click: "view(carnet.id)" } Ouvrir
-                %a.btn.btn-primary.btn-xs{ href: "" } Edit
-                %a.btn.btn-default.btn-xs{ ng_click: "delete()" } Delete
-
-              %button.btn.btn-primary{ ng_click: "openAdd()" } Ajouter un carnet
 
         %pagination{ total_items: "pagination.totalItems",
           ng: { model: "pagination.currentPage", change: "pageChanged()" },
