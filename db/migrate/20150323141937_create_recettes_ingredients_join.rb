@@ -1,4 +1,4 @@
-class CreateRecettesIngredientsJoin < ActiveRecord::Migration
+class CreateIngredientsRecettesJoin < ActiveRecord::Migration
 	def self.up
     	create_table 'ingredients_recettes', :id => false do |t|
       		t.column 'recette_id', :integer

@@ -18,7 +18,7 @@ controllers.controller "IndexController", ($scope,$routeParams,$location,$resour
 
     $scope.pagination = {
       currentPage: 1
-      perPage: 3
+      perPage: 9
     }
 
     $scope.pageChanged = ->
