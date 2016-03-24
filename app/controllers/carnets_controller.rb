@@ -1,12 +1,12 @@
 class CarnetsController < ApplicationController
   def index
     if current_user
-      carnets = Carnet.where('user_id like ?', current_user.id)
+      carnets = Carnet.where( user_id: current_user.id)
         .paginate(page: params[:page], per_page: 5)
 
       render json: {
         carnets: carnets,
-        totalItem: carnets.count,
+        totalItem: carnets.count
       }
     end
   end
@@ -57,7 +57,7 @@ class CarnetsController < ApplicationController
   end
 
   def modal_carnets
-    carnets = Carnet.where('user_id like ?', current_user.id)
+    carnets = Carnet.where( user_id: current_user.id)
 
     render json: {
       carnets: carnets

@@ -10,7 +10,6 @@
     "angular-sanitize": "latest",
     "angular-ui-select": "latest",
     "bootstrap-sass-official": "latest",
-    "angular-ui-bootstrap": "latest",
     "angular-flash": "latest"
   }
 }

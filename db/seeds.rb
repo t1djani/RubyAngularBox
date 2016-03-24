@@ -13,5 +13,5 @@ recipes_list = [
 ]
 
 recipes_list.each do |name, instructions, image|
-  Recette.create( name: name, instructions: instructions, image: image, user_id: user_id )
+  Recette.create( name: name, instructions: instructions, image: image )
 end

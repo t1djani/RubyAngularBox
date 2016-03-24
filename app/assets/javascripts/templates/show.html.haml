@@ -8,6 +8,9 @@
         %p{ ng_bind_html: "recette.instructions | nl2br" }
         %h4 Ingredients :
         %p{ ng_repeat: "ingredient in recette.ingredients" } {{ ingredient }}
+        %h4 Créateur :
+        %p {{ user.username }}
+        %p {{ user.email }}
     %button.btn.btn-default{ ng_click: "back()" } Back
     %button.btn.btn-default{ ng_if: "recette.user_id == user.id", ng_click: "edit()" } Editer
     %button.btn.btn-danger{ ng_if: "recette.user_id == user.id", ng_click: "open()" } Supprimer

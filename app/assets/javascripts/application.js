@@ -18,8 +18,8 @@
 //= require angular-resource/angular-resource
 //= require angular-sanitize/angular-sanitize
 //= require angular-ui-select/dist/select
-//= require angular-ui-bootstrap/dist/ui-bootstrap-0.13.0-SNAPSHOT.js
-//= require angular-ui-bootstrap/dist/ui-bootstrap-tpls-0.13.0-SNAPSHOT.js
+//= require angular-ui-bootstrap
+//= require angular-ui-bootstrap-tpls
 //= require angularjs-file-upload
 //= require angular-rails-templates
 //= require_tree .
